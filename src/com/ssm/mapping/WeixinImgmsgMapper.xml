@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.mapper.WeixinImgmsgMapper" >
+  <resultMap id="BaseResultMap" type="com.ssm.po.WeixinImgmsg" >
+    <id column="IMGMSG_ID" property="imgmsgId" jdbcType="VARCHAR" />
+    <result column="KEYWORD" property="keyword" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="INTEGER" />
+    <result column="BZ" property="bz" jdbcType="VARCHAR" />
+    <result column="TITLE1" property="title1" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION1" property="description1" jdbcType="VARCHAR" />
+    <result column="IMGURL1" property="imgurl1" jdbcType="VARCHAR" />
+    <result column="TOURL1" property="tourl1" jdbcType="VARCHAR" />
+    <result column="TITLE2" property="title2" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION2" property="description2" jdbcType="VARCHAR" />
+    <result column="IMGURL2" property="imgurl2" jdbcType="VARCHAR" />
+    <result column="TOURL2" property="tourl2" jdbcType="VARCHAR" />
+    <result column="TITLE3" property="title3" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION3" property="description3" jdbcType="VARCHAR" />
+    <result column="IMGURL3" property="imgurl3" jdbcType="VARCHAR" />
+    <result column="TOURL3" property="tourl3" jdbcType="VARCHAR" />
+    <result column="TITLE4" property="title4" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION4" property="description4" jdbcType="VARCHAR" />
+    <result column="IMGURL4" property="imgurl4" jdbcType="VARCHAR" />
+    <result column="TOURL4" property="tourl4" jdbcType="VARCHAR" />
+    <result column="TITLE5" property="title5" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION5" property="description5" jdbcType="VARCHAR" />
+    <result column="IMGURL5" property="imgurl5" jdbcType="VARCHAR" />
+    <result column="TOURL5" property="tourl5" jdbcType="VARCHAR" />
+    <result column="TITLE6" property="title6" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION6" property="description6" jdbcType="VARCHAR" />
+    <result column="IMGURL6" property="imgurl6" jdbcType="VARCHAR" />
+    <result column="TOURL6" property="tourl6" jdbcType="VARCHAR" />
+    <result column="TITLE7" property="title7" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION7" property="description7" jdbcType="VARCHAR" />
+    <result column="IMGURL7" property="imgurl7" jdbcType="VARCHAR" />
+    <result column="TOURL7" property="tourl7" jdbcType="VARCHAR" />
+    <result column="TITLE8" property="title8" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION8" property="description8" jdbcType="VARCHAR" />
+    <result column="IMGURL8" property="imgurl8" jdbcType="VARCHAR" />
+    <result column="TOURL8" property="tourl8" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    IMGMSG_ID, KEYWORD, CREATETIME, STATUS, BZ, TITLE1, DESCRIPTION1, IMGURL1, TOURL1, 
+    TITLE2, DESCRIPTION2, IMGURL2, TOURL2, TITLE3, DESCRIPTION3, IMGURL3, TOURL3, TITLE4, 
+    DESCRIPTION4, IMGURL4, TOURL4, TITLE5, DESCRIPTION5, IMGURL5, TOURL5, TITLE6, DESCRIPTION6, 
+    IMGURL6, TOURL6, TITLE7, DESCRIPTION7, IMGURL7, TOURL7, TITLE8, DESCRIPTION8, IMGURL8, 
+    TOURL8
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ssm.po.WeixinImgmsgExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from weixin_imgmsg
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from weixin_imgmsg
+    where IMGMSG_ID = #{imgmsgId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from weixin_imgmsg
+    where IMGMSG_ID = #{imgmsgId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ssm.po.WeixinImgmsgExample" >
+    delete from weixin_imgmsg
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ssm.po.WeixinImgmsg" >
+    insert into weixin_imgmsg (IMGMSG_ID, KEYWORD, CREATETIME, 
+      STATUS, BZ, TITLE1, 
+      DESCRIPTION1, IMGURL1, TOURL1, 
+      TITLE2, DESCRIPTION2, IMGURL2, 
+      TOURL2, TITLE3, DESCRIPTION3, 
+      IMGURL3, TOURL3, TITLE4, 
+      DESCRIPTION4, IMGURL4, TOURL4, 
+      TITLE5, DESCRIPTION5, IMGURL5, 
+      TOURL5, TITLE6, DESCRIPTION6, 
+      IMGURL6, TOURL6, TITLE7, 
+      DESCRIPTION7, IMGURL7, TOURL7, 
+      TITLE8, DESCRIPTION8, IMGURL8, 
+      TOURL8)
+    values (#{imgmsgId,jdbcType=VARCHAR}, #{keyword,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{bz,jdbcType=VARCHAR}, #{title1,jdbcType=VARCHAR}, 
+      #{description1,jdbcType=VARCHAR}, #{imgurl1,jdbcType=VARCHAR}, #{tourl1,jdbcType=VARCHAR}, 
+      #{title2,jdbcType=VARCHAR}, #{description2,jdbcType=VARCHAR}, #{imgurl2,jdbcType=VARCHAR}, 
+      #{tourl2,jdbcType=VARCHAR}, #{title3,jdbcType=VARCHAR}, #{description3,jdbcType=VARCHAR}, 
+      #{imgurl3,jdbcType=VARCHAR}, #{tourl3,jdbcType=VARCHAR}, #{title4,jdbcType=VARCHAR}, 
+      #{description4,jdbcType=VARCHAR}, #{imgurl4,jdbcType=VARCHAR}, #{tourl4,jdbcType=VARCHAR}, 
+      #{title5,jdbcType=VARCHAR}, #{description5,jdbcType=VARCHAR}, #{imgurl5,jdbcType=VARCHAR}, 
+      #{tourl5,jdbcType=VARCHAR}, #{title6,jdbcType=VARCHAR}, #{description6,jdbcType=VARCHAR}, 
+      #{imgurl6,jdbcType=VARCHAR}, #{tourl6,jdbcType=VARCHAR}, #{title7,jdbcType=VARCHAR}, 
+      #{description7,jdbcType=VARCHAR}, #{imgurl7,jdbcType=VARCHAR}, #{tourl7,jdbcType=VARCHAR}, 
+      #{title8,jdbcType=VARCHAR}, #{description8,jdbcType=VARCHAR}, #{imgurl8,jdbcType=VARCHAR}, 
+      #{tourl8,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ssm.po.WeixinImgmsg" >
+    insert into weixin_imgmsg
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="imgmsgId != null" >
+        IMGMSG_ID,
+      </if>
+      <if test="keyword != null" >
+        KEYWORD,
+      </if>
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="bz != null" >
+        BZ,
+      </if>
+      <if test="title1 != null" >
+        TITLE1,
+      </if>
+      <if test="description1 != null" >
+        DESCRIPTION1,
+      </if>
+      <if test="imgurl1 != null" >
+        IMGURL1,
+      </if>
+      <if test="tourl1 != null" >
+        TOURL1,
+      </if>
+      <if test="title2 != null" >
+        TITLE2,
+      </if>
+      <if test="description2 != null" >
+        DESCRIPTION2,
+      </if>
+      <if test="imgurl2 != null" >
+        IMGURL2,
+      </if>
+      <if test="tourl2 != null" >
+        TOURL2,
+      </if>
+      <if test="title3 != null" >
+        TITLE3,
+      </if>
+      <if test="description3 != null" >
+        DESCRIPTION3,
+      </if>
+      <if test="imgurl3 != null" >
+        IMGURL3,
+      </if>
+      <if test="tourl3 != null" >
+        TOURL3,
+      </if>
+      <if test="title4 != null" >
+        TITLE4,
+      </if>
+      <if test="description4 != null" >
+        DESCRIPTION4,
+      </if>
+      <if test="imgurl4 != null" >
+        IMGURL4,
+      </if>
+      <if test="tourl4 != null" >
+        TOURL4,
+      </if>
+      <if test="title5 != null" >
+        TITLE5,
+      </if>
+      <if test="description5 != null" >
+        DESCRIPTION5,
+      </if>
+      <if test="imgurl5 != null" >
+        IMGURL5,
+      </if>
+      <if test="tourl5 != null" >
+        TOURL5,
+      </if>
+      <if test="title6 != null" >
+        TITLE6,
+      </if>
+      <if test="description6 != null" >
+        DESCRIPTION6,
+      </if>
+      <if test="imgurl6 != null" >
+        IMGURL6,
+      </if>
+      <if test="tourl6 != null" >
+        TOURL6,
+      </if>
+      <if test="title7 != null" >
+        TITLE7,
+      </if>
+      <if test="description7 != null" >
+        DESCRIPTION7,
+      </if>
+      <if test="imgurl7 != null" >
+        IMGURL7,
+      </if>
+      <if test="tourl7 != null" >
+        TOURL7,
+      </if>
+      <if test="title8 != null" >
+        TITLE8,
+      </if>
+      <if test="description8 != null" >
+        DESCRIPTION8,
+      </if>
+      <if test="imgurl8 != null" >
+        IMGURL8,
+      </if>
+      <if test="tourl8 != null" >
+        TOURL8,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="imgmsgId != null" >
+        #{imgmsgId,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null" >
+        #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="bz != null" >
+        #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="title1 != null" >
+        #{title1,jdbcType=VARCHAR},
+      </if>
+      <if test="description1 != null" >
+        #{description1,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl1 != null" >
+        #{imgurl1,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl1 != null" >
+        #{tourl1,jdbcType=VARCHAR},
+      </if>
+      <if test="title2 != null" >
+        #{title2,jdbcType=VARCHAR},
+      </if>
+      <if test="description2 != null" >
+        #{description2,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl2 != null" >
+        #{imgurl2,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl2 != null" >
+        #{tourl2,jdbcType=VARCHAR},
+      </if>
+      <if test="title3 != null" >
+        #{title3,jdbcType=VARCHAR},
+      </if>
+      <if test="description3 != null" >
+        #{description3,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl3 != null" >
+        #{imgurl3,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl3 != null" >
+        #{tourl3,jdbcType=VARCHAR},
+      </if>
+      <if test="title4 != null" >
+        #{title4,jdbcType=VARCHAR},
+      </if>
+      <if test="description4 != null" >
+        #{description4,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl4 != null" >
+        #{imgurl4,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl4 != null" >
+        #{tourl4,jdbcType=VARCHAR},
+      </if>
+      <if test="title5 != null" >
+        #{title5,jdbcType=VARCHAR},
+      </if>
+      <if test="description5 != null" >
+        #{description5,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl5 != null" >
+        #{imgurl5,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl5 != null" >
+        #{tourl5,jdbcType=VARCHAR},
+      </if>
+      <if test="title6 != null" >
+        #{title6,jdbcType=VARCHAR},
+      </if>
+      <if test="description6 != null" >
+        #{description6,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl6 != null" >
+        #{imgurl6,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl6 != null" >
+        #{tourl6,jdbcType=VARCHAR},
+      </if>
+      <if test="title7 != null" >
+        #{title7,jdbcType=VARCHAR},
+      </if>
+      <if test="description7 != null" >
+        #{description7,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl7 != null" >
+        #{imgurl7,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl7 != null" >
+        #{tourl7,jdbcType=VARCHAR},
+      </if>
+      <if test="title8 != null" >
+        #{title8,jdbcType=VARCHAR},
+      </if>
+      <if test="description8 != null" >
+        #{description8,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl8 != null" >
+        #{imgurl8,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl8 != null" >
+        #{tourl8,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ssm.po.WeixinImgmsgExample" resultType="java.lang.Integer" >
+    select count(*) from weixin_imgmsg
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update weixin_imgmsg
+    <set >
+      <if test="record.imgmsgId != null" >
+        IMGMSG_ID = #{record.imgmsgId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword != null" >
+        KEYWORD = #{record.keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null" >
+        CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.bz != null" >
+        BZ = #{record.bz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title1 != null" >
+        TITLE1 = #{record.title1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description1 != null" >
+        DESCRIPTION1 = #{record.description1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgurl1 != null" >
+        IMGURL1 = #{record.imgurl1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tourl1 != null" >
+        TOURL1 = #{record.tourl1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title2 != null" >
+        TITLE2 = #{record.title2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description2 != null" >
+        DESCRIPTION2 = #{record.description2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgurl2 != null" >
+        IMGURL2 = #{record.imgurl2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tourl2 != null" >
+        TOURL2 = #{record.tourl2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title3 != null" >
+        TITLE3 = #{record.title3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description3 != null" >
+        DESCRIPTION3 = #{record.description3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgurl3 != null" >
+        IMGURL3 = #{record.imgurl3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tourl3 != null" >
+        TOURL3 = #{record.tourl3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title4 != null" >
+        TITLE4 = #{record.title4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description4 != null" >
+        DESCRIPTION4 = #{record.description4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgurl4 != null" >
+        IMGURL4 = #{record.imgurl4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tourl4 != null" >
+        TOURL4 = #{record.tourl4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title5 != null" >
+        TITLE5 = #{record.title5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description5 != null" >
+        DESCRIPTION5 = #{record.description5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgurl5 != null" >
+        IMGURL5 = #{record.imgurl5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tourl5 != null" >
+        TOURL5 = #{record.tourl5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title6 != null" >
+        TITLE6 = #{record.title6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description6 != null" >
+        DESCRIPTION6 = #{record.description6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgurl6 != null" >
+        IMGURL6 = #{record.imgurl6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tourl6 != null" >
+        TOURL6 = #{record.tourl6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title7 != null" >
+        TITLE7 = #{record.title7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description7 != null" >
+        DESCRIPTION7 = #{record.description7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgurl7 != null" >
+        IMGURL7 = #{record.imgurl7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tourl7 != null" >
+        TOURL7 = #{record.tourl7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title8 != null" >
+        TITLE8 = #{record.title8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description8 != null" >
+        DESCRIPTION8 = #{record.description8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgurl8 != null" >
+        IMGURL8 = #{record.imgurl8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tourl8 != null" >
+        TOURL8 = #{record.tourl8,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update weixin_imgmsg
+    set IMGMSG_ID = #{record.imgmsgId,jdbcType=VARCHAR},
+      KEYWORD = #{record.keyword,jdbcType=VARCHAR},
+      CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=INTEGER},
+      BZ = #{record.bz,jdbcType=VARCHAR},
+      TITLE1 = #{record.title1,jdbcType=VARCHAR},
+      DESCRIPTION1 = #{record.description1,jdbcType=VARCHAR},
+      IMGURL1 = #{record.imgurl1,jdbcType=VARCHAR},
+      TOURL1 = #{record.tourl1,jdbcType=VARCHAR},
+      TITLE2 = #{record.title2,jdbcType=VARCHAR},
+      DESCRIPTION2 = #{record.description2,jdbcType=VARCHAR},
+      IMGURL2 = #{record.imgurl2,jdbcType=VARCHAR},
+      TOURL2 = #{record.tourl2,jdbcType=VARCHAR},
+      TITLE3 = #{record.title3,jdbcType=VARCHAR},
+      DESCRIPTION3 = #{record.description3,jdbcType=VARCHAR},
+      IMGURL3 = #{record.imgurl3,jdbcType=VARCHAR},
+      TOURL3 = #{record.tourl3,jdbcType=VARCHAR},
+      TITLE4 = #{record.title4,jdbcType=VARCHAR},
+      DESCRIPTION4 = #{record.description4,jdbcType=VARCHAR},
+      IMGURL4 = #{record.imgurl4,jdbcType=VARCHAR},
+      TOURL4 = #{record.tourl4,jdbcType=VARCHAR},
+      TITLE5 = #{record.title5,jdbcType=VARCHAR},
+      DESCRIPTION5 = #{record.description5,jdbcType=VARCHAR},
+      IMGURL5 = #{record.imgurl5,jdbcType=VARCHAR},
+      TOURL5 = #{record.tourl5,jdbcType=VARCHAR},
+      TITLE6 = #{record.title6,jdbcType=VARCHAR},
+      DESCRIPTION6 = #{record.description6,jdbcType=VARCHAR},
+      IMGURL6 = #{record.imgurl6,jdbcType=VARCHAR},
+      TOURL6 = #{record.tourl6,jdbcType=VARCHAR},
+      TITLE7 = #{record.title7,jdbcType=VARCHAR},
+      DESCRIPTION7 = #{record.description7,jdbcType=VARCHAR},
+      IMGURL7 = #{record.imgurl7,jdbcType=VARCHAR},
+      TOURL7 = #{record.tourl7,jdbcType=VARCHAR},
+      TITLE8 = #{record.title8,jdbcType=VARCHAR},
+      DESCRIPTION8 = #{record.description8,jdbcType=VARCHAR},
+      IMGURL8 = #{record.imgurl8,jdbcType=VARCHAR},
+      TOURL8 = #{record.tourl8,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ssm.po.WeixinImgmsg" >
+    update weixin_imgmsg
+    <set >
+      <if test="keyword != null" >
+        KEYWORD = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CREATETIME = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="bz != null" >
+        BZ = #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="title1 != null" >
+        TITLE1 = #{title1,jdbcType=VARCHAR},
+      </if>
+      <if test="description1 != null" >
+        DESCRIPTION1 = #{description1,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl1 != null" >
+        IMGURL1 = #{imgurl1,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl1 != null" >
+        TOURL1 = #{tourl1,jdbcType=VARCHAR},
+      </if>
+      <if test="title2 != null" >
+        TITLE2 = #{title2,jdbcType=VARCHAR},
+      </if>
+      <if test="description2 != null" >
+        DESCRIPTION2 = #{description2,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl2 != null" >
+        IMGURL2 = #{imgurl2,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl2 != null" >
+        TOURL2 = #{tourl2,jdbcType=VARCHAR},
+      </if>
+      <if test="title3 != null" >
+        TITLE3 = #{title3,jdbcType=VARCHAR},
+      </if>
+      <if test="description3 != null" >
+        DESCRIPTION3 = #{description3,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl3 != null" >
+        IMGURL3 = #{imgurl3,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl3 != null" >
+        TOURL3 = #{tourl3,jdbcType=VARCHAR},
+      </if>
+      <if test="title4 != null" >
+        TITLE4 = #{title4,jdbcType=VARCHAR},
+      </if>
+      <if test="description4 != null" >
+        DESCRIPTION4 = #{description4,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl4 != null" >
+        IMGURL4 = #{imgurl4,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl4 != null" >
+        TOURL4 = #{tourl4,jdbcType=VARCHAR},
+      </if>
+      <if test="title5 != null" >
+        TITLE5 = #{title5,jdbcType=VARCHAR},
+      </if>
+      <if test="description5 != null" >
+        DESCRIPTION5 = #{description5,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl5 != null" >
+        IMGURL5 = #{imgurl5,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl5 != null" >
+        TOURL5 = #{tourl5,jdbcType=VARCHAR},
+      </if>
+      <if test="title6 != null" >
+        TITLE6 = #{title6,jdbcType=VARCHAR},
+      </if>
+      <if test="description6 != null" >
+        DESCRIPTION6 = #{description6,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl6 != null" >
+        IMGURL6 = #{imgurl6,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl6 != null" >
+        TOURL6 = #{tourl6,jdbcType=VARCHAR},
+      </if>
+      <if test="title7 != null" >
+        TITLE7 = #{title7,jdbcType=VARCHAR},
+      </if>
+      <if test="description7 != null" >
+        DESCRIPTION7 = #{description7,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl7 != null" >
+        IMGURL7 = #{imgurl7,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl7 != null" >
+        TOURL7 = #{tourl7,jdbcType=VARCHAR},
+      </if>
+      <if test="title8 != null" >
+        TITLE8 = #{title8,jdbcType=VARCHAR},
+      </if>
+      <if test="description8 != null" >
+        DESCRIPTION8 = #{description8,jdbcType=VARCHAR},
+      </if>
+      <if test="imgurl8 != null" >
+        IMGURL8 = #{imgurl8,jdbcType=VARCHAR},
+      </if>
+      <if test="tourl8 != null" >
+        TOURL8 = #{tourl8,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where IMGMSG_ID = #{imgmsgId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ssm.po.WeixinImgmsg" >
+    update weixin_imgmsg
+    set KEYWORD = #{keyword,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      BZ = #{bz,jdbcType=VARCHAR},
+      TITLE1 = #{title1,jdbcType=VARCHAR},
+      DESCRIPTION1 = #{description1,jdbcType=VARCHAR},
+      IMGURL1 = #{imgurl1,jdbcType=VARCHAR},
+      TOURL1 = #{tourl1,jdbcType=VARCHAR},
+      TITLE2 = #{title2,jdbcType=VARCHAR},
+      DESCRIPTION2 = #{description2,jdbcType=VARCHAR},
+      IMGURL2 = #{imgurl2,jdbcType=VARCHAR},
+      TOURL2 = #{tourl2,jdbcType=VARCHAR},
+      TITLE3 = #{title3,jdbcType=VARCHAR},
+      DESCRIPTION3 = #{description3,jdbcType=VARCHAR},
+      IMGURL3 = #{imgurl3,jdbcType=VARCHAR},
+      TOURL3 = #{tourl3,jdbcType=VARCHAR},
+      TITLE4 = #{title4,jdbcType=VARCHAR},
+      DESCRIPTION4 = #{description4,jdbcType=VARCHAR},
+      IMGURL4 = #{imgurl4,jdbcType=VARCHAR},
+      TOURL4 = #{tourl4,jdbcType=VARCHAR},
+      TITLE5 = #{title5,jdbcType=VARCHAR},
+      DESCRIPTION5 = #{description5,jdbcType=VARCHAR},
+      IMGURL5 = #{imgurl5,jdbcType=VARCHAR},
+      TOURL5 = #{tourl5,jdbcType=VARCHAR},
+      TITLE6 = #{title6,jdbcType=VARCHAR},
+      DESCRIPTION6 = #{description6,jdbcType=VARCHAR},
+      IMGURL6 = #{imgurl6,jdbcType=VARCHAR},
+      TOURL6 = #{tourl6,jdbcType=VARCHAR},
+      TITLE7 = #{title7,jdbcType=VARCHAR},
+      DESCRIPTION7 = #{description7,jdbcType=VARCHAR},
+      IMGURL7 = #{imgurl7,jdbcType=VARCHAR},
+      TOURL7 = #{tourl7,jdbcType=VARCHAR},
+      TITLE8 = #{title8,jdbcType=VARCHAR},
+      DESCRIPTION8 = #{description8,jdbcType=VARCHAR},
+      IMGURL8 = #{imgurl8,jdbcType=VARCHAR},
+      TOURL8 = #{tourl8,jdbcType=VARCHAR}
+    where IMGMSG_ID = #{imgmsgId,jdbcType=VARCHAR}
+  </update>
+</mapper>

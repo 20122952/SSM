@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.mapper.SysFhsmsMapper" >
+  <resultMap id="BaseResultMap" type="com.ssm.po.SysFhsms" >
+    <id column="FHSMS_ID" property="fhsmsId" jdbcType="VARCHAR" />
+    <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="TO_USERNAME" property="toUsername" jdbcType="VARCHAR" />
+    <result column="FROM_USERNAME" property="fromUsername" jdbcType="VARCHAR" />
+    <result column="SEND_TIME" property="sendTime" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="SANME_ID" property="sanmeId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FHSMS_ID, CONTENT, TYPE, TO_USERNAME, FROM_USERNAME, SEND_TIME, STATUS, SANME_ID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ssm.po.SysFhsmsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_fhsms
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_fhsms
+    where FHSMS_ID = #{fhsmsId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_fhsms
+    where FHSMS_ID = #{fhsmsId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ssm.po.SysFhsmsExample" >
+    delete from sys_fhsms
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ssm.po.SysFhsms" >
+    insert into sys_fhsms (FHSMS_ID, CONTENT, TYPE, 
+      TO_USERNAME, FROM_USERNAME, SEND_TIME, 
+      STATUS, SANME_ID)
+    values (#{fhsmsId,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{toUsername,jdbcType=VARCHAR}, #{fromUsername,jdbcType=VARCHAR}, #{sendTime,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{sanmeId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ssm.po.SysFhsms" >
+    insert into sys_fhsms
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fhsmsId != null" >
+        FHSMS_ID,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="toUsername != null" >
+        TO_USERNAME,
+      </if>
+      <if test="fromUsername != null" >
+        FROM_USERNAME,
+      </if>
+      <if test="sendTime != null" >
+        SEND_TIME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="sanmeId != null" >
+        SANME_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fhsmsId != null" >
+        #{fhsmsId,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="toUsername != null" >
+        #{toUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="fromUsername != null" >
+        #{fromUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="sanmeId != null" >
+        #{sanmeId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ssm.po.SysFhsmsExample" resultType="java.lang.Integer" >
+    select count(*) from sys_fhsms
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sys_fhsms
+    <set >
+      <if test="record.fhsmsId != null" >
+        FHSMS_ID = #{record.fhsmsId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        TYPE = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.toUsername != null" >
+        TO_USERNAME = #{record.toUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fromUsername != null" >
+        FROM_USERNAME = #{record.fromUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sendTime != null" >
+        SEND_TIME = #{record.sendTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sanmeId != null" >
+        SANME_ID = #{record.sanmeId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sys_fhsms
+    set FHSMS_ID = #{record.fhsmsId,jdbcType=VARCHAR},
+      CONTENT = #{record.content,jdbcType=VARCHAR},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      TO_USERNAME = #{record.toUsername,jdbcType=VARCHAR},
+      FROM_USERNAME = #{record.fromUsername,jdbcType=VARCHAR},
+      SEND_TIME = #{record.sendTime,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      SANME_ID = #{record.sanmeId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ssm.po.SysFhsms" >
+    update sys_fhsms
+    <set >
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="toUsername != null" >
+        TO_USERNAME = #{toUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="fromUsername != null" >
+        FROM_USERNAME = #{fromUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime != null" >
+        SEND_TIME = #{sendTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="sanmeId != null" >
+        SANME_ID = #{sanmeId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FHSMS_ID = #{fhsmsId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ssm.po.SysFhsms" >
+    update sys_fhsms
+    set CONTENT = #{content,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=VARCHAR},
+      TO_USERNAME = #{toUsername,jdbcType=VARCHAR},
+      FROM_USERNAME = #{fromUsername,jdbcType=VARCHAR},
+      SEND_TIME = #{sendTime,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      SANME_ID = #{sanmeId,jdbcType=VARCHAR}
+    where FHSMS_ID = #{fhsmsId,jdbcType=VARCHAR}
+  </update>
+</mapper>
