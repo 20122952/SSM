@@ -30,73 +30,77 @@
 						<div class="col-xs-12">
 
 
-						 	<div class="span12">
+							<div class="span12">
 								<div class="widget-box">
-									<div class="widget-header widget-header-blue widget-header-flat wi1dget-header-large">
+									<div
+										class="widget-header widget-header-blue widget-header-flat wi1dget-header-large">
 										<h4 class="lighter">地图</h4>
 									</div>
 									<div class="widget-body">
-									 <div class="widget-main">
-									 	<div class="step-content row-fluid position-relative">
-								 			<div style="float: left;margin-top: 5px;">
-												经度：
-												<span class="input-icon">
-													<input type="text" id="ZUOBIAO_Y" title="" value="" style="width:98%;" disabled="disabled">
-													<i class="ace-icon fa fa-fire"></i>
-												</span>
-												纬度：
-												<span class="input-icon">
-													<input type="text" id="ZUOBIAO_X" title="" value="" style="width:98%;" disabled="disabled">
-													<i class="ace-icon fa fa-fire"></i>
-												</span>
+										<div class="widget-main">
+											<div class="step-content row-fluid position-relative">
+												<div style="float: left; margin-top: 5px;">
+													经度： <span class="input-icon"> <input type="text"
+														id="ZUOBIAO_Y" title="" value="" style="width: 98%;"
+														disabled="disabled"> <i
+														class="ace-icon fa fa-fire"></i>
+													</span> 纬度： <span class="input-icon"> <input type="text"
+														id="ZUOBIAO_X" title="" value="" style="width: 98%;"
+														disabled="disabled"> <i
+														class="ace-icon fa fa-fire"></i>
+													</span>
+												</div>
+												<div>
+													&nbsp;&nbsp;
+													<button class="btn btn-app btn-light btn-xs"
+														onclick="openMap();">
+														<i class="ace-icon fa fa-globe"></i>
+													</button>
+												</div>
 											</div>
-											<div>
-												&nbsp;&nbsp;
-												<button class="btn btn-app btn-light btn-xs"  onclick="openMap();">
-												<i class="ace-icon fa fa-globe"></i>
-												</button>
+											<hr>
+											<div class="step-content row-fluid position-relative">
+												<div style="float: left; margin-top: 5px;">
+													经度： <span class="input-icon"> <input type="text"
+														id="ZUOBIAO_Y2" title="" value="" style="width: 98%;"
+														disabled="disabled"> <i
+														class="ace-icon fa fa-fire"></i>
+													</span> 纬度： <span class="input-icon"> <input type="text"
+														id="ZUOBIAO_X2" title="" value="" style="width: 98%;"
+														disabled="disabled"> <i
+														class="ace-icon fa fa-fire"></i>
+													</span>
+												</div>
+												<div>
+													&nbsp;&nbsp;
+													<button class="btn btn-app btn-light btn-xs"
+														onclick="openMap2();">
+														<i class="ace-icon fa fa-globe"></i>
+													</button>
+												</div>
 											</div>
-									 	</div>
-									 	<hr>
-									 	<div class="step-content row-fluid position-relative">
-								 			<div style="float: left;margin-top: 5px;">
-												经度：
-												<span class="input-icon">
-													<input type="text" id="ZUOBIAO_Y2" title="" value="" style="width:98%;" disabled="disabled">
-													<i class="ace-icon fa fa-fire"></i>
-												</span>
-												纬度：
-												<span class="input-icon">
-													<input type="text" id="ZUOBIAO_X2" title="" value="" style="width:98%;" disabled="disabled">
-													<i class="ace-icon fa fa-fire"></i>
-												</span>
+											<hr>
+											<div class="step-content row-fluid position-relative">
+												<div style="float: left; margin-top: 5px;">
+													距离： <span class="input-icon"> <input type="text"
+														id="distance" title="" value="" style="width: 250px;"
+														disabled="disabled"> <i
+														class="ace-icon fa fa-dashboard"></i>千米&nbsp;&nbsp;
+													</span>
+												</div>
+												<div>
+													<button class="btn btn-app btn-light btn-xs"
+														onclick="getDistance();">计算</button>
+												</div>
 											</div>
-											<div>
-												&nbsp;&nbsp;
-												<button class="btn btn-app btn-light btn-xs"  onclick="openMap2();">
-												<i class="ace-icon fa fa-globe"></i>
-												</button>
-											</div>
-									 	</div>
-									 	<hr>
-									 	<div class="step-content row-fluid position-relative">
-								 			<div style="float: left;margin-top: 5px;">
-												距离：
-												<span class="input-icon">
-													<input type="text" id="distance" title="" value="" style="width:250px;" disabled="disabled">
-													<i class="ace-icon fa fa-dashboard"></i>千米&nbsp;&nbsp;
-												</span>
-											</div>
-											<div>
-												<button class="btn btn-app btn-light btn-xs" onclick="getDistance();">计算</button>
-											</div>
-									 	</div>
-									 	
-									 </div><!--/widget-main-->
-									</div><!--/widget-body-->
+
+										</div>
+										<!--/widget-main-->
+									</div>
+									<!--/widget-body-->
 								</div>
 							</div>
- 
+
 						</div>
 						<!-- /.col -->
 					</div>
@@ -109,8 +113,9 @@
 
 
 		<!-- 返回顶部 -->
-		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		<a href="#" id="btn-scroll-up"
+			class="btn-scroll-up btn btn-sm btn-inverse"> <i
+			class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
 
 	</div>
@@ -131,4 +136,4 @@
 
 
 </body>
-</html> 
+</html>

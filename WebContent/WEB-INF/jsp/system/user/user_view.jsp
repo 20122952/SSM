@@ -26,52 +26,79 @@
 				<div class="page-content">
 					<div class="row">
 						<div class="col-xs-12">
-								<form action="user/${msg }.do" name="userForm" id="userForm" method="post">
-									<input type="hidden" name="USER_ID" id="user_id" value="${pd.USER_ID }"/>
-									<div id="zhongxin" style="padding-top: 13px;">
-									<table id="table_report" class="table table-striped table-bordered table-hover">
+							<form action="user/${msg }.do" name="userForm" id="userForm"
+								method="post">
+								<input type="hidden" name="USER_ID" id="user_id"
+									value="${pd.USER_ID }" />
+								<div id="zhongxin" style="padding-top: 13px;">
+									<table id="table_report"
+										class="table table-striped table-bordered table-hover">
 										<c:if test="${fx != 'head'}">
-										<tr>
-											<td style="width:79px;text-align: right;padding-top: 13px;">角色:</td>
-											<td id="juese">
-											<select class="chosen-select form-control" name="ROLE_ID" id="role_id" style="vertical-align:top;" style="width:98%;" disabled="disabled">
-											<c:forEach items="${roleList}" var="role">
-												<option value="${role.ROLE_ID }" <c:if test="${role.ROLE_ID == pd.ROLE_ID }">selected</c:if>>${role.ROLE_NAME }</option>
-											</c:forEach>
-											</select>
-											</td>
-										</tr>
+											<tr>
+												<td
+													style="width: 79px; text-align: right; padding-top: 13px;">角色:</td>
+												<td id="juese"><select
+													class="chosen-select form-control" name="ROLE_ID"
+													id="role_id" style="vertical-align: top;"
+													style="width:98%;" disabled="disabled">
+														<c:forEach items="${roleList}" var="role">
+															<option value="${role.ROLE_ID }"
+																<c:if test="${role.ROLE_ID == pd.ROLE_ID }">selected</c:if>>${role.ROLE_NAME }</option>
+														</c:forEach>
+												</select></td>
+											</tr>
 										</c:if>
 										<c:if test="${fx == 'head'}">
-											<input name="ROLE_ID" id="role_id" value="${pd.ROLE_ID }" type="hidden" />
+											<input name="ROLE_ID" id="role_id" value="${pd.ROLE_ID }"
+												type="hidden" />
 										</c:if>
 										<tr>
-											<td style="width:79px;text-align: right;padding-top: 13px;">用户名:</td>
-											<td><input type="text" name="USERNAME" id="loginname" value="${pd.USERNAME }" maxlength="32" title="用户名" style="width:98%;" disabled="disabled"/></td>
+											<td
+												style="width: 79px; text-align: right; padding-top: 13px;">用户名:</td>
+											<td><input type="text" name="USERNAME" id="loginname"
+												value="${pd.USERNAME }" maxlength="32" title="用户名"
+												style="width: 98%;" disabled="disabled" /></td>
 										</tr>
 										<tr>
-											<td style="width:79px;text-align: right;padding-top: 13px;">编号:</td>
-											<td><input type="text" name="NUMBER" id="NUMBER" value="${pd.NUMBER }" maxlength="32" title="编号" onblur="hasN('${pd.USERNAME }')" style="width:98%;" disabled="disabled"/></td>
+											<td
+												style="width: 79px; text-align: right; padding-top: 13px;">编号:</td>
+											<td><input type="text" name="NUMBER" id="NUMBER"
+												value="${pd.NUMBER }" maxlength="32" title="编号"
+												onblur="hasN('${pd.USERNAME }')" style="width: 98%;"
+												disabled="disabled" /></td>
 										</tr>
 										<tr>
-											<td style="width:79px;text-align: right;padding-top: 13px;">姓名:</td>
-											<td><input type="text" name="NAME" id="name"  value="${pd.NAME }"  maxlength="32" placeholder="这里输入姓名" title="姓名" style="width:98%;" disabled="disabled"/></td>
+											<td
+												style="width: 79px; text-align: right; padding-top: 13px;">姓名:</td>
+											<td><input type="text" name="NAME" id="name"
+												value="${pd.NAME }" maxlength="32" placeholder="这里输入姓名"
+												title="姓名" style="width: 98%;" disabled="disabled" /></td>
 										</tr>
 										<tr>
-											<td style="width:79px;text-align: right;padding-top: 13px;">手机号:</td>
-											<td><input type="number" name="PHONE" id="PHONE"  value="${pd.PHONE }"  maxlength="32" title="手机号" style="width:98%;" disabled="disabled"/></td>
+											<td
+												style="width: 79px; text-align: right; padding-top: 13px;">手机号:</td>
+											<td><input type="number" name="PHONE" id="PHONE"
+												value="${pd.PHONE }" maxlength="32" title="手机号"
+												style="width: 98%;" disabled="disabled" /></td>
 										</tr>
 										<tr>
-											<td style="width:79px;text-align: right;padding-top: 13px;">邮箱:</td>
-											<td><input type="email" name="EMAIL" id="EMAIL"  value="${pd.EMAIL }" maxlength="32" title="邮箱" onblur="hasE('${pd.USERNAME }')" style="width:98%;" disabled="disabled"/></td>
+											<td
+												style="width: 79px; text-align: right; padding-top: 13px;">邮箱:</td>
+											<td><input type="email" name="EMAIL" id="EMAIL"
+												value="${pd.EMAIL }" maxlength="32" title="邮箱"
+												onblur="hasE('${pd.USERNAME }')" style="width: 98%;"
+												disabled="disabled" /></td>
 										</tr>
 										<tr>
-											<td style="width:79px;text-align: right;padding-top: 13px;">备注:</td>
-											<td><input type="text" name="BZ" id="BZ"value="${pd.BZ }"  maxlength="64" title="备注" style="width:98%;" disabled="disabled"/></td>
+											<td
+												style="width: 79px; text-align: right; padding-top: 13px;">备注:</td>
+											<td><input type="text" name="BZ" id="BZ"
+												value="${pd.BZ }" maxlength="64" title="备注"
+												style="width: 98%;" disabled="disabled" /></td>
 										</tr>
 									</table>
-									</div>
-								</form>
+								</div>
+							</form>
 						</div>
 						<!-- /.col -->
 					</div>

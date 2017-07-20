@@ -27,19 +27,22 @@
 					<div class="hr hr-18 dotted hr-double"></div>
 					<div class="row">
 						<div class="col-xs-12">
-					 	<div class="span12">
-							<div class="widget-box">
-								<div class="widget-header widget-header-blue widget-header-flat wi1dget-header-large">
-									<h4 class="lighter">打印</h4>
+							<div class="span12">
+								<div class="widget-box">
+									<div
+										class="widget-header widget-header-blue widget-header-flat wi1dget-header-large">
+										<h4 class="lighter">打印</h4>
+									</div>
+									<div class="widget-body">
+										<div class="widget-main">
+											<input type="button" value="打印预览" onclick="openP()" />&nbsp;如果点不开,换个浏览器试试
+											<hr>
+										</div>
+										<!--/widget-main-->
+									</div>
+									<!--/widget-body-->
 								</div>
-								<div class="widget-body">
-								 <div class="widget-main">
-								  	<input type="button" value="打印预览" onclick="openP()"/>&nbsp;如果点不开,换个浏览器试试
-									<hr>
-								 </div><!--/widget-main-->
-								</div><!--/widget-body-->
 							</div>
-						</div>
 						</div>
 						<!-- /.col -->
 					</div>
@@ -51,8 +54,9 @@
 		<!-- /.main-content -->
 
 		<!-- 返回顶部 -->
-		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		<a href="#" id="btn-scroll-up"
+			class="btn-scroll-up btn btn-sm btn-inverse"> <i
+			class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
 
 	</div>
@@ -72,8 +76,7 @@
 	}
 	</script>
 </body>
-</html> 
- 
+</html>
 
 
 
@@ -83,5 +86,6 @@
 
 
 
-		
+
+
 

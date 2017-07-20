@@ -30,107 +30,136 @@
 							<table style="margin-top: 8px;">
 								<tr height="35">
 									<c:if test="${QX.add == 1 }">
-									<td style="width:69px;"><a href="javascript:addRole(0);" class="btn btn-sm btn-success">新增组</a></td>
+										<td style="width: 69px;"><a href="javascript:addRole(0);"
+											class="btn btn-sm btn-success">新增组</a></td>
 									</c:if>
-										<c:choose>
+									<c:choose>
 										<c:when test="${not empty roleList}">
-										<c:forEach items="${roleList}" var="role" varStatus="vs">
-											<td style="width:100px;" class="center" <c:choose><c:when test="${pd.ROLE_ID == role.ROLE_ID}">bgcolor="#FFC926" onMouseOut="javascript:this.bgColor='#FFC926';"</c:when><c:otherwise>bgcolor="#E5E5E5" onMouseOut="javascript:this.bgColor='#E5E5E5';"</c:otherwise></c:choose>  onMouseMove="javascript:this.bgColor='#FFC926';" >
-												<a href="role.do?ROLE_ID=${role.ROLE_ID }" style="text-decoration:none; display:block;"><i class="menu-icon fa fa-users"></i><font color="#666666">${role.ROLE_NAME }</font></a>
-											</td>
-											<td style="width:5px;"></td>
-										</c:forEach>
+											<c:forEach items="${roleList}" var="role" varStatus="vs">
+												<td style="width: 100px;" class="center"
+													<c:choose><c:when test="${pd.ROLE_ID == role.ROLE_ID}">bgcolor="#FFC926" onMouseOut="javascript:this.bgColor='#FFC926';"</c:when><c:otherwise>bgcolor="#E5E5E5" onMouseOut="javascript:this.bgColor='#E5E5E5';"</c:otherwise></c:choose>
+													onMouseMove="javascript:this.bgColor='#FFC926';"><a
+													href="role.do?ROLE_ID=${role.ROLE_ID }"
+													style="text-decoration: none; display: block;"><i
+														class="menu-icon fa fa-users"></i><font color="#666666">${role.ROLE_NAME }</font></a>
+												</td>
+												<td style="width: 5px;"></td>
+											</c:forEach>
 										</c:when>
 										<c:otherwise>
 											<tr>
-											<td colspan="100">没有相关数据</td>
+												<td colspan="100">没有相关数据</td>
 											</tr>
 										</c:otherwise>
-										</c:choose>
+									</c:choose>
 									<td></td>
 								</tr>
 							</table>
-							
+
 							<table>
-								<tr height="7px;"><td colspan="100"></td></tr>
+								<tr height="7px;">
+									<td colspan="100"></td>
+								</tr>
 								<tr>
-								<td><font color="#808080">本组：</font></td>
-								<td>
-								<c:if test="${QX.edit == 1 }">
-								<a class="btn btn-mini btn-info" onclick="editRole('${pd.ROLE_ID }');">修改组名称<i class="icon-arrow-right  icon-on-right"></i></a>
-								</c:if>
-									<c:choose>
-										<c:when test="${pd.ROLE_ID == '99'}">
-										</c:when>
-										<c:otherwise>
-										<c:if test="${QX.edit == 1 }">
-										<a class="btn btn-mini btn-purple" onclick="editRights('${pd.ROLE_ID }');"><i class="icon-pencil"></i>组菜单权限</a>
-										</c:if>
-										</c:otherwise>
-									</c:choose>
-									<c:choose> 
-										<c:when test="${pd.ROLE_ID == '1' or pd.ROLE_ID == '2'}">
-										</c:when>
-										<c:otherwise>
-										 <c:if test="${QX.del == 1 }">
-										 <a class='btn btn-mini btn-danger' title="删除" onclick="delRole('${pd.ROLE_ID }','z','${pd.ROLE_NAME }');"><i class='ace-icon fa fa-trash-o bigger-130'></i></a>
-										 </c:if>
-										</c:otherwise>
-									</c:choose>
-								</td>
+									<td><font color="#808080">本组：</font></td>
+									<td><c:if test="${QX.edit == 1 }">
+											<a class="btn btn-mini btn-info"
+												onclick="editRole('${pd.ROLE_ID }');">修改组名称<i
+												class="icon-arrow-right  icon-on-right"></i></a>
+										</c:if> <c:choose>
+											<c:when test="${pd.ROLE_ID == '99'}">
+											</c:when>
+											<c:otherwise>
+												<c:if test="${QX.edit == 1 }">
+													<a class="btn btn-mini btn-purple"
+														onclick="editRights('${pd.ROLE_ID }');"><i
+														class="icon-pencil"></i>组菜单权限</a>
+												</c:if>
+											</c:otherwise>
+										</c:choose> <c:choose>
+											<c:when test="${pd.ROLE_ID == '1' or pd.ROLE_ID == '2'}">
+											</c:when>
+											<c:otherwise>
+												<c:if test="${QX.del == 1 }">
+													<a class='btn btn-mini btn-danger' title="删除"
+														onclick="delRole('${pd.ROLE_ID }','z','${pd.ROLE_NAME }');"><i
+														class='ace-icon fa fa-trash-o bigger-130'></i></a>
+												</c:if>
+											</c:otherwise>
+										</c:choose></td>
 								</tr>
 							</table>
-							
-							<table id="dynamic-table" class="table table-striped table-bordered table-hover" style="margin-top:7px;">
+
+							<table id="dynamic-table"
+								class="table table-striped table-bordered table-hover"
+								style="margin-top: 7px;">
 								<thead>
-								<tr>
-									<th class="center" style="width: 50px;">序号</th>
-									<th class='center'>角色</th>
-									<c:if test="${QX.edit == 1 }">
-									<th class="center">增</th>
-									<th class="center">删</th>
-									<th class="center">改</th>
-									<th class="center">查</th>
-									</c:if>
-									<th style="width:155px;"  class="center">操作</th>
-								</tr>
+									<tr>
+										<th class="center" style="width: 50px;">序号</th>
+										<th class='center'>角色</th>
+										<c:if test="${QX.edit == 1 }">
+											<th class="center">增</th>
+											<th class="center">删</th>
+											<th class="center">改</th>
+											<th class="center">查</th>
+										</c:if>
+										<th style="width: 155px;" class="center">操作</th>
+									</tr>
 								</thead>
 								<c:choose>
 									<c:when test="${not empty roleList_z}">
 										<c:if test="${QX.cha == 1 }">
-										<c:forEach items="${roleList_z}" var="var" varStatus="vs">
-										
-										<tr>
-										<td class='center' style="width:30px;">${vs.index+1}</td>
-										<td id="ROLE_NAMETd${var.ROLE_ID }">${var.ROLE_NAME }</td>
-										<c:if test="${QX.edit == 1 }">
-										<td style="width:30px;"><a onclick="roleButton('${var.ROLE_ID }','add_qx');" class="btn btn-warning btn-mini" title="分配新增权限"><i class="ace-icon fa fa-wrench bigger-110 icon-only"></i></a></td>
-										<td style="width:30px;"><a onclick="roleButton('${var.ROLE_ID }','del_qx');" class="btn btn-warning btn-mini" title="分配删除权限"><i class="ace-icon fa fa-wrench bigger-110 icon-only"></i></a></td>
-										<td style="width:30px;"><a onclick="roleButton('${var.ROLE_ID }','edit_qx');" class="btn btn-warning btn-mini" title="分配修改权限"><i class="ace-icon fa fa-wrench bigger-110 icon-only"></i></a></td>
-										<td style="width:30px;"><a onclick="roleButton('${var.ROLE_ID }','cha_qx');" class="btn btn-warning btn-mini" title="分配查看权限"><i class="ace-icon fa fa-wrench bigger-110 icon-only"></i></a></td>
-										</c:if>
-										<td style="width:155px;">
-										<c:if test="${QX.edit != 1 && QX.del != 1 }">
-										<div style="width:100%;" class="center">
-										<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
-										</div>
-										</c:if>
-										<c:if test="${QX.edit == 1 }">
-										<a class="btn btn-mini btn-purple" onclick="editRights('${var.ROLE_ID }');"><i class="icon-pencil"></i>菜单权限</a>
-										<a class='btn btn-mini btn-info' title="编辑" onclick="editRole('${var.ROLE_ID }');"><i class='ace-icon fa fa-pencil-square-o bigger-130'></i></a>
-										</c:if>
-										<c:choose> 
-											<c:when test="${var.ROLE_ID == '2' or var.ROLE_ID == '1'}">
-											</c:when>
-											<c:otherwise>
-											 <c:if test="${QX.del == 1 }">
-											 <a class='btn btn-mini btn-danger' title="删除" onclick="delRole('${var.ROLE_ID }','c','${var.ROLE_NAME }');"><i class='ace-icon fa fa-trash-o bigger-130'></i></a>
-											 </c:if>
-											</c:otherwise>
-										</c:choose>
-										</td>
-										</tr>
-										</c:forEach>
+											<c:forEach items="${roleList_z}" var="var" varStatus="vs">
+
+												<tr>
+													<td class='center' style="width: 30px;">${vs.index+1}</td>
+													<td id="ROLE_NAMETd${var.ROLE_ID }">${var.ROLE_NAME }</td>
+													<c:if test="${QX.edit == 1 }">
+														<td style="width: 30px;"><a
+															onclick="roleButton('${var.ROLE_ID }','add_qx');"
+															class="btn btn-warning btn-mini" title="分配新增权限"><i
+																class="ace-icon fa fa-wrench bigger-110 icon-only"></i></a></td>
+														<td style="width: 30px;"><a
+															onclick="roleButton('${var.ROLE_ID }','del_qx');"
+															class="btn btn-warning btn-mini" title="分配删除权限"><i
+																class="ace-icon fa fa-wrench bigger-110 icon-only"></i></a></td>
+														<td style="width: 30px;"><a
+															onclick="roleButton('${var.ROLE_ID }','edit_qx');"
+															class="btn btn-warning btn-mini" title="分配修改权限"><i
+																class="ace-icon fa fa-wrench bigger-110 icon-only"></i></a></td>
+														<td style="width: 30px;"><a
+															onclick="roleButton('${var.ROLE_ID }','cha_qx');"
+															class="btn btn-warning btn-mini" title="分配查看权限"><i
+																class="ace-icon fa fa-wrench bigger-110 icon-only"></i></a></td>
+													</c:if>
+													<td style="width: 155px;"><c:if
+															test="${QX.edit != 1 && QX.del != 1 }">
+															<div style="width: 100%;" class="center">
+																<span
+																	class="label label-large label-grey arrowed-in-right arrowed-in"><i
+																	class="ace-icon fa fa-lock" title="无权限"></i></span>
+															</div>
+														</c:if> <c:if test="${QX.edit == 1 }">
+															<a class="btn btn-mini btn-purple"
+																onclick="editRights('${var.ROLE_ID }');"><i
+																class="icon-pencil"></i>菜单权限</a>
+															<a class='btn btn-mini btn-info' title="编辑"
+																onclick="editRole('${var.ROLE_ID }');"><i
+																class='ace-icon fa fa-pencil-square-o bigger-130'></i></a>
+														</c:if> <c:choose>
+															<c:when
+																test="${var.ROLE_ID == '2' or var.ROLE_ID == '1'}">
+															</c:when>
+															<c:otherwise>
+																<c:if test="${QX.del == 1 }">
+																	<a class='btn btn-mini btn-danger' title="删除"
+																		onclick="delRole('${var.ROLE_ID }','c','${var.ROLE_NAME }');"><i
+																		class='ace-icon fa fa-trash-o bigger-130'></i></a>
+																</c:if>
+															</c:otherwise>
+														</c:choose></td>
+												</tr>
+											</c:forEach>
 										</c:if>
 										<c:if test="${QX.cha == 0 }">
 											<tr>
@@ -140,17 +169,18 @@
 									</c:when>
 									<c:otherwise>
 										<tr>
-										<td colspan="100" class="center" >没有相关数据</td>
+											<td colspan="100" class="center">没有相关数据</td>
 										</tr>
 									</c:otherwise>
 								</c:choose>
 							</table>
 							<div>
-							<c:if test="${QX.add == 1 }">
-								&nbsp;&nbsp;<a class="btn btn-sm btn-success" onclick="addRole('${pd.ROLE_ID }');">新增角色</a>
-							</c:if>
+								<c:if test="${QX.add == 1 }">
+								&nbsp;&nbsp;<a class="btn btn-sm btn-success"
+										onclick="addRole('${pd.ROLE_ID }');">新增角色</a>
+								</c:if>
 							</div>
-							
+
 						</div>
 						<!-- /.col -->
 					</div>
@@ -163,8 +193,9 @@
 
 
 		<!-- 返回顶部 -->
-		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		<a href="#" id="btn-scroll-up"
+			class="btn-scroll-up btn btn-sm btn-inverse"> <i
+			class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
 
 	</div>

@@ -1,13 +1,9 @@
 package com.ssm.entity.system;
 /**
- * 
-* 类名称：角色
-* 类描述： 
-* @author ningzhefeng
-*  
-* 联系方式
-* 创建时间20170405
-* @version 1.0
+ * 类名称：角色
+ * 类描述： 
+ * @author zhefeng.ning
+ * @创建时间
  */
 public class Role {
 	private String ROLE_ID;

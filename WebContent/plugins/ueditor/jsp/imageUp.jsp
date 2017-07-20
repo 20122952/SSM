@@ -8,7 +8,7 @@
         <%@ page import="ueditor.Uploader" %>
         <%@ page import="java.io.File" %>
         <%@ page import="java.util.Map" %>
-        <%@ page import="com.fh.util.*" %>
+        <%@ page import="com.ssm.util.*" %>
 
             <%
 

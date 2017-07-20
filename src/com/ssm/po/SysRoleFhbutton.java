@@ -6,6 +6,10 @@ public class SysRoleFhbutton {
     private String roleId;
 
     private String buttonId;
+    
+    private SysRole sysRole;
+    
+    private SysFhbutton sysFhbutton;
 
     public String getRbId() {
         return rbId;
@@ -30,4 +34,21 @@ public class SysRoleFhbutton {
     public void setButtonId(String buttonId) {
         this.buttonId = buttonId == null ? null : buttonId.trim();
     }
+
+	public SysRole getSysRole() {
+		return sysRole;
+	}
+
+	public void setSysRole(SysRole sysRole) {
+		this.sysRole = sysRole;
+	}
+
+	public SysFhbutton getSysFhbutton() {
+		return sysFhbutton;
+	}
+
+	public void setSysFhbutton(SysFhbutton sysFhbutton) {
+		this.sysFhbutton = sysFhbutton;
+	}
+    
 }

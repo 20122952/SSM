@@ -27,67 +27,78 @@
 						<div class="col-xs-12">
 							<table style="margin-top: 8px;">
 								<tr height="35">
-									<td style="width:50px;">角色组:</td>
-										<c:choose>
+									<td style="width: 50px;">角色组:</td>
+									<c:choose>
 										<c:when test="${not empty roleList}">
-										<!-- 角色组循环 -->
-										<c:forEach items="${roleList}" var="role" varStatus="vs">
-											<td style="width:100px;" class="center" <c:choose><c:when test="${pd.ROLE_ID == role.ROLE_ID}">bgcolor="#FFC926" onMouseOut="javascript:this.bgColor='#FFC926';"</c:when><c:otherwise>bgcolor="#E5E5E5" onMouseOut="javascript:this.bgColor='#E5E5E5';"</c:otherwise></c:choose>  onMouseMove="javascript:this.bgColor='#FFC926';" >
-												<a href="buttonrights/list.do?ROLE_ID=${role.ROLE_ID }" style="text-decoration:none; display:block;"><i class="menu-icon fa fa-users"></i><font color="#666666">${role.ROLE_NAME }</font></a>
-											</td>
-											<td style="width:5px;"></td>
-										</c:forEach>
+											<!-- 角色组循环 -->
+											<c:forEach items="${roleList}" var="role" varStatus="vs">
+												<td style="width: 100px;" class="center"
+													<c:choose><c:when test="${pd.ROLE_ID == role.ROLE_ID}">bgcolor="#FFC926" onMouseOut="javascript:this.bgColor='#FFC926';"</c:when><c:otherwise>bgcolor="#E5E5E5" onMouseOut="javascript:this.bgColor='#E5E5E5';"</c:otherwise></c:choose>
+													onMouseMove="javascript:this.bgColor='#FFC926';"><a
+													href="buttonrights/list.do?ROLE_ID=${role.ROLE_ID }"
+													style="text-decoration: none; display: block;"><i
+														class="menu-icon fa fa-users"></i><font color="#666666">${role.ROLE_NAME }</font></a>
+												</td>
+												<td style="width: 5px;"></td>
+											</c:forEach>
 										</c:when>
 										<c:otherwise>
 											<tr>
-											<td colspan="100">没有相关数据</td>
+												<td colspan="100">没有相关数据</td>
 											</tr>
 										</c:otherwise>
-										</c:choose>
+									</c:choose>
 									<td></td>
 								</tr>
 							</table>
-							<table id="dynamic-table" class="table table-striped table-bordered table-hover" style="margin-top:7px;">
+							<table id="dynamic-table"
+								class="table table-striped table-bordered table-hover"
+								style="margin-top: 7px;">
 								<thead>
-								<tr>
-									<th class="center" style="width: 50px;">序号</th>
-									<th class='center'>角色</th>
-									<c:if test="${QX.edit == 1 }">
-										<!-- 按钮循环 -->
-										<c:forEach items="${buttonlist}" var="fhbutton" varStatus="vsb">
-											<th class='center'>${fhbutton.NAME }</th>
-										</c:forEach>
-									</c:if>
-								</tr>
+									<tr>
+										<th class="center" style="width: 50px;">序号</th>
+										<th class='center'>角色</th>
+										<c:if test="${QX.edit == 1 }">
+											<!-- 按钮循环 -->
+											<c:forEach items="${buttonlist}" var="fhbutton"
+												varStatus="vsb">
+												<th class='center'>${fhbutton.NAME }</th>
+											</c:forEach>
+										</c:if>
+									</tr>
 								</thead>
 								<c:choose>
 									<c:when test="${not empty roleList_z}">
 										<c:if test="${QX.cha == 1 }">
-										<!-- 角色循环 -->
-										<c:forEach items="${roleList_z}" var="var" varStatus="vs">
-										<tr>
-										<td class='center' style="width:30px;">${vs.index+1}</td>
-										<td class='center' id="ROLE_NAMETd${var.ROLE_ID }">${var.ROLE_NAME }</td>
-										<c:if test="${QX.edit == 1 }">
-											<!-- 按钮循环 -->
-											<c:forEach items="${buttonlist}" var="fhbutton" varStatus="vsb">
-												<!-- 关联表循环 -->
-												<c:forEach items="${roleFhbuttonlist}" var="varRb" varStatus="vsRb">
-													<c:if test="${var.ROLE_ID == varRb.ROLE_ID && fhbutton.FHBUTTON_ID == varRb.BUTTON_ID }">
-														<c:set value="1" var="rbvalue"></c:set>
+											<!-- 角色循环 -->
+											<c:forEach items="${roleList_z}" var="var" varStatus="vs">
+												<tr>
+													<td class='center' style="width: 30px;">${vs.index+1}</td>
+													<td class='center' id="ROLE_NAMETd${var.ROLE_ID }">${var.ROLE_NAME }</td>
+													<c:if test="${QX.edit == 1 }">
+														<!-- 按钮循环 -->
+														<c:forEach items="${buttonlist}" var="fhbutton"
+															varStatus="vsb">
+															<!-- 关联表循环 -->
+															<c:forEach items="${roleFhbuttonlist}" var="varRb"
+																varStatus="vsRb">
+																<c:if
+																	test="${var.ROLE_ID == varRb.ROLE_ID && fhbutton.FHBUTTON_ID == varRb.BUTTON_ID }">
+																	<c:set value="1" var="rbvalue"></c:set>
+																</c:if>
+															</c:forEach>
+															<td class='center' style="height: 20px;"><label>
+																	<input name="switch-field-1"
+																	onclick="upRb('${var.ROLE_ID}','${fhbutton.FHBUTTON_ID}')"
+																	class="ace ace-switch ace-switch-3" type="checkbox"
+																	<c:if test="${rbvalue == 1 }">checked="checked"</c:if>>
+																	<span class="lbl"></span>
+															</label></td>
+															<c:set value="0" var="rbvalue"></c:set>
+														</c:forEach>
 													</c:if>
-												</c:forEach>
-												<td class='center' style="height: 20px;">
-													<label>
-														<input name="switch-field-1" onclick="upRb('${var.ROLE_ID}','${fhbutton.FHBUTTON_ID}')" class="ace ace-switch ace-switch-3" type="checkbox" <c:if test="${rbvalue == 1 }">checked="checked"</c:if> >
-														<span class="lbl"></span>
-													</label>
-												</td>
-												<c:set value="0" var="rbvalue"></c:set>
+												</tr>
 											</c:forEach>
-										</c:if>
-										</tr>
-										</c:forEach>
 										</c:if>
 										<c:if test="${QX.cha == 0 }">
 											<tr>
@@ -97,7 +108,7 @@
 									</c:when>
 									<c:otherwise>
 										<tr>
-										<td colspan="100" class="center" >没有相关数据</td>
+											<td colspan="100" class="center">没有相关数据</td>
 										</tr>
 									</c:otherwise>
 								</c:choose>
@@ -113,8 +124,9 @@
 		<!-- /.main-content -->
 
 		<!-- 返回顶部 -->
-		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		<a href="#" id="btn-scroll-up"
+			class="btn-scroll-up btn btn-sm btn-inverse"> <i
+			class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
 
 	</div>

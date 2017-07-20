@@ -27,45 +27,47 @@
 				<div class="page-content">
 					<div class="row">
 						<div class="col-xs-12">
-	
-						<table style="margin-top:10px;">
-							<tr bgcolor="#E0E0E0" style="height:26px;">
-								<td style="padding-left: 15px;">在线人数：</td>
-								<td>
-									<div style="width:39px;" id="onlineCount">0</div>
-								</td>
-							</tr>
-						</table>
-	
-						<table id="simple-table" class="table table-striped table-bordered table-hover"  style="margin-top:5px;">
-							<thead>
-								<tr>
-									<th class="center" style="width: 30px;">
-										<label><input class="ace" type="checkbox" id="zcheckbox" /><span class="lbl"></span></label>
-									</th>
-									<th class='center' style="width:50px;">序号</th>
-									<th>用户名</th>
-									<th class="center" style="width: 100px;">操作</th>
+
+							<table style="margin-top: 10px;">
+								<tr bgcolor="#E0E0E0" style="height: 26px;">
+									<td style="padding-left: 15px;">在线人数：</td>
+									<td>
+										<div style="width: 39px;" id="onlineCount">0</div>
+									</td>
 								</tr>
-							</thead>
-												
-							<tbody id="userlist">
-							</tbody>
-						</table>
-							 
-				 		<div class="page-header position-relative">
-						<table style="width:100%;">
-							<tr>
-								<td style="vertical-align:top;">
-									<c:if test="${QX.del == 1 }">
-									<a title="批量强制下线" class="btn btn-mini btn-danger" onclick="makeAll('确定要把这些用户强制下线吗?');" >强制下线</a>
-									</c:if>
-								</td>
-							</tr>
-						</table>
+							</table>
+
+							<table id="simple-table"
+								class="table table-striped table-bordered table-hover"
+								style="margin-top: 5px;">
+								<thead>
+									<tr>
+										<th class="center" style="width: 30px;"><label><input
+												class="ace" type="checkbox" id="zcheckbox" /><span
+												class="lbl"></span></label></th>
+										<th class='center' style="width: 50px;">序号</th>
+										<th>用户名</th>
+										<th class="center" style="width: 100px;">操作</th>
+									</tr>
+								</thead>
+
+								<tbody id="userlist">
+								</tbody>
+							</table>
+
+							<div class="page-header position-relative">
+								<table style="width: 100%;">
+									<tr>
+										<td style="vertical-align: top;"><c:if
+												test="${QX.del == 1 }">
+												<a title="批量强制下线" class="btn btn-mini btn-danger"
+													onclick="makeAll('确定要把这些用户强制下线吗?');">强制下线</a>
+											</c:if></td>
+									</tr>
+								</table>
+							</div>
+
 						</div>
- 
- 						</div>
 						<!-- /.col -->
 					</div>
 					<!-- /.row -->
@@ -77,8 +79,9 @@
 
 
 		<!-- 返回顶部 -->
-		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		<a href="#" id="btn-scroll-up"
+			class="btn-scroll-up btn btn-sm btn-inverse"> <i
+			class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
 
 	</div>
@@ -96,8 +99,8 @@
 	<script type="text/javascript">
 		$(top.hangge());
 		</script>
-		
-		<c:if test="${QX.cha == 1 }">
+
+	<c:if test="${QX.cha == 1 }">
 		<script type="text/javascript">
 		
 		//初始化
@@ -119,14 +122,16 @@
 		var userCount = 0;	//在线总数
 		function online(){
 			if (window.WebSocket) {
-				websocketonline = new WebSocket(encodeURI('ws://'+top.oladress)); //oladress在main.jsp页面定义
+				websocketonline = new WebSocket(encodeURI('ws://127.0.0.1:8889')); //+top.oladress //oladress在main.jsp页面定义
 				websocketonline.onopen = function() {
 					websocketonline.send('[QQ313596790]fhadmin');//连接成功
 				};
 				websocketonline.onerror = function() {
+					console.log("连接失败");
 					//连接失败
 				};
 				websocketonline.onclose = function() {
+					console.log("连接断开");
 					//连接断开
 				};
 				//消息接收
@@ -264,12 +269,12 @@
 			});
 		}
 		</script>
-		</c:if>
-		<c:if test="${QX.cha == 0 }">
-			<script type="text/javascript">
+	</c:if>
+	<c:if test="${QX.cha == 0 }">
+		<script type="text/javascript">
 				alert("您无权查看");
 			</script>
-		</c:if>
-	</body>
+	</c:if>
+</body>
 </html>
 

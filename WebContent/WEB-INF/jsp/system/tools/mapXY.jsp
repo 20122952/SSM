@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
@@ -6,18 +7,35 @@
 %>
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-	<title>选点获取经纬度</title>
-	<base href="<%=basePath%>">
-	<script type="text/javascript" src="static/js/jquery-1.7.2.js"></script>
+<head>
+<title>选点获取经纬度</title>
+<base href="<%=basePath%>">
+<script type="text/javascript" src="static/js/jquery-1.7.2.js"></script>
 
-	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=40GWXiduhOft266lK4N1dopL"></script>
+<script type="text/javascript"
+	src="http://api.map.baidu.com/api?v=2.0&ak=40GWXiduhOft266lK4N1dopL"></script>
 
 
 <style type="text/css">
-body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
-#l-map{height:100%;width:78%;float:left;border-right:2px solid #bcbcbc;}
-#r-result{height:100%;width:20%;float:left;}
+body, html, #allmap {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	margin: 0;
+}
+
+#l-map {
+	height: 100%;
+	width: 78%;
+	float: left;
+	border-right: 2px solid #bcbcbc;
+}
+
+#r-result {
+	height: 100%;
+	width: 20%;
+	float: left;
+}
 </style>
 
 <script type="text/javascript">
@@ -48,30 +66,32 @@ body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
 		}
 	}
 	</script>
-	
+
 </head>
 <body>
-<div>
-<table bgcolor="#E3E4D8" width="100%">
-	<tr>
-		<td>纬度：</td>
-		<td><input id="ZUOBIAO_X" value="" type="text" /></td>
-		<td>经度：</td>
-		<td><input id="ZUOBIAO_Y" value="" type="text" /></td>
-		<td><input type="button" value="确定" onclick="choose();"/></td>
-		<td width="100">
-		<input type="text" id="suggestId" size="20" value="这里输入搜索地址" style="width:150px;" /></div><div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto;">
-		</td>
-	</tr>
-</table>
-</div>
-<div id="allmap"></div>
+	<div>
+		<table bgcolor="#E3E4D8" width="100%">
+			<tr>
+				<td>纬度：</td>
+				<td><input id="ZUOBIAO_X" value="" type="text" /></td>
+				<td>经度：</td>
+				<td><input id="ZUOBIAO_Y" value="" type="text" /></td>
+				<td><input type="button" value="确定" onclick="choose();" /></td>
+				<td width="100"><input type="text" id="suggestId" size="20"
+					value="这里输入搜索地址" style="width: 150px;" />
+				</div>
+					<div id="searchResultPanel"
+						style="border: 1px solid #C0C0C0; width: 150px; height: auto;"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="allmap"></div>
 
 </body>
 
 </html>
 
-	<script type="text/javascript">
+<script type="text/javascript">
 
 	// 百度地图API功能
 	/* var map = new BMap.Map("allmap");
@@ -101,7 +121,7 @@ body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
 		
 		
 	</script>
-	
+
 <script type="text/javascript">
 
 // 百度地图API功能
@@ -182,12 +202,11 @@ function showInfo(e){
 }
 map.addEventListener("click", showInfo);
 </script>
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+

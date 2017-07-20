@@ -29,21 +29,18 @@
 					<div class="hr hr-18 dotted hr-double"></div>
 					<div class="row">
 						<div class="col-xs-12">
-
 							<div class="alert alert-block alert-success">
 								<button type="button" class="close" data-dismiss="alert">
 									<i class="ace-icon fa fa-times"></i>
 								</button>
-								<i class="ace-icon fa fa-check green"></i>
-								欢迎使用 FH Admin 系统&nbsp;&nbsp;
-								<strong class="green">
-									&nbsp;QQ:313596790
-									<a href="http://www.fhadmin.org" target="_blank"><small>(&nbsp;www.fhadmin.org&nbsp;)</small></a>
+								<i class="ace-icon fa fa-check green"></i> 欢迎使用宁哲峰开发的后台管理系统&nbsp;&nbsp; <strong class="green">
+									&nbsp;QQ:2663261528 
+									<!-- <a href="http://www.fhadmin.org" target="_blank"><small>(&nbsp;www.fhadmin.org&nbsp;)</small></a> -->
 								</strong>
 							</div>
-							
-							
-							<div id="main" style="width: 600px;height:300px;"></div>
+
+
+							<div id="main" style="width: 600px; height: 300px;"></div>
 							<script type="text/javascript">
 						        // 基于准备好的dom，初始化echarts实例
 						        var myChart = echarts.init(document.getElementById('main'));
@@ -51,7 +48,7 @@
 						        // 指定图表的配置项和数据
 								var option = {
 						            title: {
-						                text: 'FH Admin用户统计'
+						                text: 'Admin用户统计'
 						            },
 						            tooltip: {},
 						            xAxis: {
@@ -79,7 +76,7 @@
 						        // 使用刚指定的配置项和数据显示图表。
 						        myChart.setOption(option);
 						    </script>
-							
+
 						</div>
 						<!-- /.col -->
 					</div>
@@ -92,8 +89,9 @@
 
 
 		<!-- 返回顶部 -->
-		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		<a href="#" id="btn-scroll-up"
+			class="btn-scroll-up btn btn-sm btn-inverse"> <i
+			class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
 
 	</div>
@@ -108,6 +106,6 @@
 	<script type="text/javascript">
 		$(top.hangge());
 	</script>
-<script type="text/javascript" src="static/ace/js/jquery.js"></script>
+	<script type="text/javascript" src="static/ace/js/jquery.js"></script>
 </body>
 </html>

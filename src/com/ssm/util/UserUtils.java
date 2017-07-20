@@ -26,13 +26,49 @@ public class UserUtils {
 	 */
 	public static PageData ListSysUserToPd(PageData pd, SysUser sysUser) {
 		pd.put("USER_ID", sysUser.getUserId());
+		pd.put("USERNAME", sysUser.getUsername());
+		pd.put("PASSWORD", sysUser.getPassword());
 		pd.put("NAME", sysUser.getName());
 		pd.put("RIGHTS", sysUser.getRights());
 		pd.put("ROLE_ID", sysUser.getRoleId());
 		pd.put("LAST_LOGIN", sysUser.getLastLogin());
 		pd.put("IP", sysUser.getIp());
 		pd.put("STATUS", sysUser.getStatus());
+		pd.put("BZ", sysUser.getBz());
+		pd.put("SKIN", sysUser.getSkin());
+		pd.put("EMAIL", sysUser.getEmail());
+		pd.put("NUMBER", sysUser.getNumber());
+		pd.put("PHONE", sysUser.getPhone());
 		return pd;
 	}
+
+	/**
+	 * pd集合里的数据存到sysUser里
+	 * @param pd
+	 * @param user
+	 * @return
+	 */
+	public static SysUser pdToSysUser(PageData pd, SysUser user) {
+		
+		user.setUserId(pd.getString("USER_ID"));
+		user.setUsername(pd.getString("USERNAME"));
+		user.setPassword(pd.getString("PASSWORD"));
+		user.setRights(pd.getString("RIGHTS"));
+		user.setRoleId(pd.getString("ROLE_ID"));
+		user.setLastLogin(pd.getString("LAST_LOGIN"));
+		user.setIp(pd.getString("IP"));
+		user.setStatus(pd.getString("STATUS"));
+		user.setSkin(pd.getString("SKIN"));
+		user.setBz(pd.getString("BZ"));
+		user.setEmail(pd.getString("EMAIL"));
+		user.setNumber(pd.getString("NUMBER"));
+		user.setPhone(pd.getString("PHONE"));
+		user.setName(pd.getString("NAME"));
+		
+		return user;
+		
+	}
+
+
 
 }

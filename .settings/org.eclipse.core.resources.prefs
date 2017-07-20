@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
-encoding//WebContent/WEB-INF/jsp/system/index/left.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/system/index/head.jsp=UTF-8
+encoding//WebContent/plugins/ueditor/jsp=UTF-8
 encoding//src/com/ssm/util=UTF-8
 encoding/<project>=UTF-8

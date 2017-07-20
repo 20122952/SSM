@@ -14,8 +14,9 @@ import com.ssm.util.UuidUtil;
 
 
 /**
- * @author 宁
- * 修改时间20170404
+ * 
+ * @author zhefeng.ning
+ * 时间 20170404
  */
 public class BaseController {
 	

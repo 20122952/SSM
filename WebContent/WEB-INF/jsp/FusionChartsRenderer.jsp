@@ -1,4 +1,4 @@
-<%@page import="com.fusioncharts.helper.FCParameters" %>
+<%@page import="com.fusioncharts.helper.FCParameters"%>
 <%
 	/*
 	 * Version 2.0: 
@@ -121,16 +121,16 @@
 			renderAt);
 	String paramsInJSON = fcParams.toJSON();
 %>
-			<!-- START Script Block for Chart <%=chartId%> -->
-			<% if(renderAt.equals(chartId+"Div")) { 
+<!-- START Script Block for Chart <%=chartId%> -->
+<% if(renderAt.equals(chartId+"Div")) { 
 			// output this chartIdDiv div only if chart is being rendered in it
 			%>
-			<div id='<%=chartId %>Div' align='center'>Chart.</div>
-			<% } %>
-			<script type='text/javascript'>
+<div id='<%=chartId %>Div' align='center'>Chart.</div>
+<% } %>
+<script type='text/javascript'>
 				var chart_<%=chartId%> = new FusionCharts(<%=paramsInJSON%>).render();
 			</script>
-			<!--END Script Block for Chart <%=chartId%> -->
+<!--END Script Block for Chart <%=chartId%> -->
 <%!
     /**
      * Converts a Boolean value to int value<br>

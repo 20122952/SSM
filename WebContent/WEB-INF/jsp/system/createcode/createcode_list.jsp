@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -28,137 +28,156 @@
 				<div class="page-content">
 					<div class="row">
 						<div class="col-xs-12">
-							
-						<!-- 检索  -->
-						<form action="createCode/list.do" method="post" name="Form" id="Form">
-						<table style="margin-top:5px;width:100%">
-							<tr>
-								<td style="width:10%">
-									<div class="nav-search">
-									<span class="input-icon">
-										<input type="text" placeholder="这里输入关键词" class="nav-search-input" id="nav-search-input" name="keywords" value="${pd.keywords }" autocomplete="off" />
-										<i class="ace-icon fa fa-search nav-search-icon"></i>
-									</span>
-									</div>
-								</td>
-								<td style="vertical-align:top;padding-left:2px;width:42px;"><a class="btn btn-light btn-xs" onclick="searchs();"  title="检索"><i id="nav-search-icon" class="ace-icon fa fa-search bigger-110 nav-search-icon blue"></i></a></td>
-								<td style="padding-left:20px;"><span class="label label-info arrowed-right arrowed-in">模版生成记录</span></td>
-							</tr>
-						</table>
-						<!-- 检索  -->
-					
-						<table id="simple-table" class="table table-striped table-bordered table-hover" style="margin-top:5px;">	
-							<thead>
-								<tr>
-									<th class="center" style="width:35px;">
-									<label class="pos-rel"><input type="checkbox" class="ace" id="zcheckbox" /><span class="lbl"></span></label>
-									</th>
-									<th class="center" style="width:50px;">序号</th>
-									<th class="center">说明</th>
-									<th class="center">包名</th>
-									<th class="center">类名</th>
-									<th class="center">表名</th>
-									<th class="center">创建时间</th>
-									<th class="center">操作</th>
-								</tr>
-							</thead>
-													
-							<tbody>
-							<!-- 开始循环 -->	
-							<c:choose>
-								<c:when test="${not empty varList}">
-									<c:if test="${QX.cha == 1 }">
-									<c:forEach items="${varList}" var="var" varStatus="vs">
-										<tr>
-											<td class='center'>
-												<label class="pos-rel"><input type='checkbox' name='ids' value="${var.CREATECODE_ID}" class="ace" /><span class="lbl"></span></label>
-											</td>
-											<td class='center' style="width: 30px;">${vs.index+1}</td>
-													<td class="center">${var.TITLE}</td>
-													<td class="center">${var.PACKAGENAME}</td>
-													<td class="center">${var.OBJECTNAME}</td>
-													<td class="center">${fn:replace(var.TABLENAME, ',fh,', '')}</td>
-													<td class="center">${var.CREATETIME}</td>
-											<td class="center">
-												<c:if test="${QX.edit != 1 && QX.del != 1 }">
-												<span class="label label-large label-grey arrowed-in-right arrowed-in"><i class="ace-icon fa fa-lock" title="无权限"></i></span>
-												</c:if>
-												<div class="hidden-sm hidden-xs btn-group">
-													<c:if test="${QX.edit == 1 }">
-													<a class="btn btn-xs btn-success" title="编辑" onclick="productCode('${var.CREATECODE_ID}');">
-														<i class="ace-icon fa fa-pencil-square-o bigger-120" title="编辑"></i>
-													</a>
-													</c:if>
-													<c:if test="${QX.del == 1 }">
-													<a class="btn btn-xs btn-danger" onclick="del('${var.CREATECODE_ID}');">
-														<i class="ace-icon fa fa-trash-o bigger-120" title="删除"></i>
-													</a>
-													</c:if>
-												</div>
-												<div class="hidden-md hidden-lg">
-													<div class="inline pos-rel">
-														<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
-															<i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-														</button>
-			
-														<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-															<c:if test="${QX.edit == 1 }">
-															<li>
-																<a style="cursor:pointer;" onclick="productCode('${var.CREATECODE_ID}');" class="tooltip-success" data-rel="tooltip" title="修改">
-																	<span class="green">
-																		<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span>
-																</a>
-															</li>
-															</c:if>
-															<c:if test="${QX.del == 1 }">
-															<li>
-																<a style="cursor:pointer;" onclick="del('${var.CREATECODE_ID}');" class="tooltip-error" data-rel="tooltip" title="删除">
-																	<span class="red">
-																		<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																	</span>
-																</a>
-															</li>
-															</c:if>
-														</ul>
-													</div>
-												</div>
-											</td>
-										</tr>
-									
-									</c:forEach>
-									</c:if>
-									<c:if test="${QX.cha == 0 }">
-										<tr>
-											<td colspan="100" class="center">您无权查看</td>
-										</tr>
-									</c:if>
-								</c:when>
-								<c:otherwise>
-									<tr class="main_info">
-										<td colspan="100" class="center" >没有相关数据</td>
+
+							<!-- 检索  -->
+							<form action="createCode/list.do" method="post" name="Form"
+								id="Form">
+								<table style="margin-top: 5px; width: 100%">
+									<tr>
+										<td style="width: 10%">
+											<div class="nav-search">
+												<span class="input-icon"> <input type="text"
+													placeholder="这里输入关键词" class="nav-search-input"
+													id="nav-search-input" name="keywords"
+													value="${pd.keywords }" autocomplete="off" /> <i
+													class="ace-icon fa fa-search nav-search-icon"></i>
+												</span>
+											</div>
+										</td>
+										<td
+											style="vertical-align: top; padding-left: 2px; width: 42px;"><a
+											class="btn btn-light btn-xs" onclick="searchs();" title="检索"><i
+												id="nav-search-icon"
+												class="ace-icon fa fa-search bigger-110 nav-search-icon blue"></i></a></td>
+										<td style="padding-left: 20px;"><span
+											class="label label-info arrowed-right arrowed-in">模版生成记录</span></td>
 									</tr>
-								</c:otherwise>
-							</c:choose>
-							</tbody>
-						</table>
-						<div class="page-header position-relative">
-						<table style="width:100%;">
-							<tr>
-								<td style="vertical-align:top;">
-									<c:if test="${QX.add == 1 }">
-									<a class="btn btn-mini btn-success" onclick="productCode('add');">启动生成器</a>
-									</c:if>
-									<c:if test="${QX.del == 1 }">
-									<a class="btn btn-mini btn-danger" onclick="makeAll('确定要删除选中的数据吗?');" title="批量删除" ><i class='ace-icon fa fa-trash-o bigger-120'></i></a>
-									</c:if>
-								</td>
-								<td style="vertical-align:top;"><div class="pagination" style="float: right;padding-top: 0px;margin-top: 0px;">${page.pageStr}</div></td>
-							</tr>
-						</table>
-						</div>
-						</form>
-					
+								</table>
+								<!-- 检索  -->
+
+								<table id="simple-table"
+									class="table table-striped table-bordered table-hover"
+									style="margin-top: 5px;">
+									<thead>
+										<tr>
+											<th class="center" style="width: 35px;"><label
+												class="pos-rel"><input type="checkbox" class="ace"
+													id="zcheckbox" /><span class="lbl"></span></label></th>
+											<th class="center" style="width: 50px;">序号</th>
+											<th class="center">说明</th>
+											<th class="center">包名</th>
+											<th class="center">类名</th>
+											<th class="center">表名</th>
+											<th class="center">创建时间</th>
+											<th class="center">操作</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<!-- 开始循环 -->
+										<c:choose>
+											<c:when test="${not empty varList}">
+												<c:if test="${QX.cha == 1 }">
+													<c:forEach items="${varList}" var="var" varStatus="vs">
+														<tr>
+															<td class='center'><label class="pos-rel"><input
+																	type='checkbox' name='ids' value="${var.CREATECODE_ID}"
+																	class="ace" /><span class="lbl"></span></label></td>
+															<td class='center' style="width: 30px;">${vs.index+1}</td>
+															<td class="center">${var.TITLE}</td>
+															<td class="center">${var.PACKAGENAME}</td>
+															<td class="center">${var.OBJECTNAME}</td>
+															<td class="center">${fn:replace(var.TABLENAME, ',fh,', '')}</td>
+															<td class="center">${var.CREATETIME}</td>
+															<td class="center"><c:if
+																	test="${QX.edit != 1 && QX.del != 1 }">
+																	<span
+																		class="label label-large label-grey arrowed-in-right arrowed-in"><i
+																		class="ace-icon fa fa-lock" title="无权限"></i></span>
+																</c:if>
+																<div class="hidden-sm hidden-xs btn-group">
+																	<c:if test="${QX.edit == 1 }">
+																		<a class="btn btn-xs btn-success" title="编辑"
+																			onclick="productCode('${var.CREATECODE_ID}');"> <i
+																			class="ace-icon fa fa-pencil-square-o bigger-120"
+																			title="编辑"></i>
+																		</a>
+																	</c:if>
+																	<c:if test="${QX.del == 1 }">
+																		<a class="btn btn-xs btn-danger"
+																			onclick="del('${var.CREATECODE_ID}');"> <i
+																			class="ace-icon fa fa-trash-o bigger-120" title="删除"></i>
+																		</a>
+																	</c:if>
+																</div>
+																<div class="hidden-md hidden-lg">
+																	<div class="inline pos-rel">
+																		<button
+																			class="btn btn-minier btn-primary dropdown-toggle"
+																			data-toggle="dropdown" data-position="auto">
+																			<i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+																		</button>
+
+																		<ul
+																			class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+																			<c:if test="${QX.edit == 1 }">
+																				<li><a style="cursor: pointer;"
+																					onclick="productCode('${var.CREATECODE_ID}');"
+																					class="tooltip-success" data-rel="tooltip"
+																					title="修改"> <span class="green"> <i
+																							class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																					</span>
+																				</a></li>
+																			</c:if>
+																			<c:if test="${QX.del == 1 }">
+																				<li><a style="cursor: pointer;"
+																					onclick="del('${var.CREATECODE_ID}');"
+																					class="tooltip-error" data-rel="tooltip" title="删除">
+																						<span class="red"> <i
+																							class="ace-icon fa fa-trash-o bigger-120"></i>
+																					</span>
+																				</a></li>
+																			</c:if>
+																		</ul>
+																	</div>
+																</div></td>
+														</tr>
+
+													</c:forEach>
+												</c:if>
+												<c:if test="${QX.cha == 0 }">
+													<tr>
+														<td colspan="100" class="center">您无权查看</td>
+													</tr>
+												</c:if>
+											</c:when>
+											<c:otherwise>
+												<tr class="main_info">
+													<td colspan="100" class="center">没有相关数据</td>
+												</tr>
+											</c:otherwise>
+										</c:choose>
+									</tbody>
+								</table>
+								<div class="page-header position-relative">
+									<table style="width: 100%;">
+										<tr>
+											<td style="vertical-align: top;"><c:if
+													test="${QX.add == 1 }">
+													<a class="btn btn-mini btn-success"
+														onclick="productCode('add');">启动生成器</a>
+												</c:if> <c:if test="${QX.del == 1 }">
+													<a class="btn btn-mini btn-danger"
+														onclick="makeAll('确定要删除选中的数据吗?');" title="批量删除"><i
+														class='ace-icon fa fa-trash-o bigger-120'></i></a>
+												</c:if></td>
+											<td style="vertical-align: top;"><div class="pagination"
+													style="float: right; padding-top: 0px; margin-top: 0px;">${page.pageStr}</div></td>
+										</tr>
+									</table>
+								</div>
+							</form>
+
 						</div>
 						<!-- /.col -->
 					</div>
@@ -171,8 +190,9 @@
 
 
 		<!-- 返回顶部 -->
-		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		<a href="#" id="btn-scroll-up"
+			class="btn-scroll-up btn btn-sm btn-inverse"> <i
+			class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
 
 	</div>

@@ -29,19 +29,11 @@
 					<div class="row">
 						<div class="col-xs-12">
 
-================================================
-							
-							
-							
-							
+							================================================ 空白页面（开发用）
 
-空白页面（开发用）
-							
-							
-							
-================================================							
-							
-						</div>
+
+
+							================================================</div>
 						<!-- /.col -->
 					</div>
 					<!-- /.row -->
@@ -53,8 +45,9 @@
 
 
 		<!-- 返回顶部 -->
-		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-			<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		<a href="#" id="btn-scroll-up"
+			class="btn-scroll-up btn btn-sm btn-inverse"> <i
+			class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
 
 	</div>

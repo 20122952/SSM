@@ -5,19 +5,18 @@ import com.ssm.util.PageData;
 import com.ssm.util.Tools;
 
 /**
- * 分页�?
- * @author FH QQ 313596790[青苔]
- * 创建时间�?2014�?6�?28�?
- */
+ * zhefeng.ning
+ * 
+ * */
 public class Page {
 	
-	private int showCount; //每页显示记录�?
-	private int totalPage;		//总页�?
+	private int showCount; //每页显示记录数
+	private int totalPage;		//总页数
 	private int totalResult;	//总记录数
-	private int currentPage;	//当前�?
+	private int currentPage;	//当前数
 	private int currentResult;	//当前记录起始索引
-	private boolean entityOrField;	//true:�?要分页的地方，传入的参数就是Page实体；false:�?要分页的地方，传入的参数�?代表的实体拥有Page属�??
-	private String pageStr;		//�?终页面显示的底部翻页导航，详细见：getPageStr();
+	private boolean entityOrField;	//true:要分页的地方，传入的参数就是Page实体；false:要分页的地方，传入的参数代表的实体拥有Page属
+	private String pageStr;		//终页面显示的底部翻页导航，详细见：getPageStr();
 	private PageData pd = new PageData();
 	
 

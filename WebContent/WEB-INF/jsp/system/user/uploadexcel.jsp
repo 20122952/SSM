@@ -27,22 +27,31 @@
 				<div class="page-content">
 					<div class="row">
 						<div class="col-xs-12">
-							<form action="user/readExcel.do" name="Form" id="Form" method="post" enctype="multipart/form-data">
+							<form action="user/readExcel.do" name="Form" id="Form"
+								method="post" enctype="multipart/form-data">
 								<div id="zhongxin">
-								<table style="width:95%;" >
-									<tr>
-										<td style="padding-top: 20px;"><input type="file" id="excel" name="excel" style="width:50px;" onchange="fileType(this)" /></td>
-									</tr>
-									<tr>
-										<td style="text-align: center;padding-top: 10px;">
-											<a class="btn btn-mini btn-primary" onclick="save();">导入</a>
-											<a class="btn btn-mini btn-danger" onclick="top.Dialog.close();">取消</a>
-											<a class="btn btn-mini btn-success" onclick="window.location.href='<%=basePath%>/user/downExcel.do'">下载模版</a>
-										</td>
-									</tr>
-								</table>
+									<table style="width: 95%;">
+										<tr>
+											<td style="padding-top: 20px;"><input type="file"
+												id="excel" name="excel" style="width: 50px;"
+												onchange="fileType(this)" /></td>
+										</tr>
+										<tr>
+											<td style="text-align: center; padding-top: 10px;"><a
+												class="btn btn-mini btn-primary" onclick="save();">导入</a> <a
+												class="btn btn-mini btn-danger"
+												onclick="top.Dialog.close();">取消</a> <a
+												class="btn btn-mini btn-success"
+												onclick="window.location.href='<%=basePath%>/user/downExcel.do'">下载模版</a>
+											</td>
+										</tr>
+									</table>
 								</div>
-								<div id="zhongxin2" class="center" style="display:none"><br/><img src="static/images/jzx.gif" /><br/><h4 class="lighter block green"></h4></div>
+								<div id="zhongxin2" class="center" style="display: none">
+									<br />
+									<img src="static/images/jzx.gif" /><br />
+									<h4 class="lighter block green"></h4>
+								</div>
 							</form>
 						</div>
 						<!-- /.col -->

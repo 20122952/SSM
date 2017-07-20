@@ -167,9 +167,6 @@ public class TwoDimensionCode {
 			int pixoff = 2;
 			// 输出内容> 二维码
 			if (contentBytes.length > 0 && contentBytes.length < 800) {
-				
-				
-				
 				boolean[][] codeOut = qrcodeHandler.calQrcode(contentBytes);
 				for (int i = 0; i < codeOut.length; i++) {
 					for (int j = 0; j < codeOut.length; j++) {
@@ -263,5 +260,22 @@ public class TwoDimensionCode {
 		System.out.println("解析结果如下：");
 		//System.out.println(decoderContent);
 		System.out.println("========decoder success!!!");
+	}
+
+	/**
+	 * 创建文件夹
+	 * @param fileName
+	 * @return
+	 */
+	public static Boolean CreateFolder(String fileName) {
+		File file = new File(fileName);
+		if(!file.isDirectory() && !file.exists()){
+			file.mkdir();
+		}
+		if(file.isDirectory()){
+			return true;
+		}else{
+			return false;
+		}
 	}
 }

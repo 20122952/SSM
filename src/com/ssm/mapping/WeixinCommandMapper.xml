@@ -1,228 +1,237 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ssm.mapper.WeixinCommandMapper" >
-  <resultMap id="BaseResultMap" type="com.ssm.po.WeixinCommand" >
-    <id column="COMMAND_ID" property="commandId" jdbcType="VARCHAR" />
-    <result column="KEYWORD" property="keyword" jdbcType="VARCHAR" />
-    <result column="COMMANDCODE" property="commandcode" jdbcType="VARCHAR" />
-    <result column="CREATETIME" property="createtime" jdbcType="VARCHAR" />
-    <result column="STATUS" property="status" jdbcType="INTEGER" />
-    <result column="BZ" property="bz" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
-    COMMAND_ID, KEYWORD, COMMANDCODE, CREATETIME, STATUS, BZ
-  </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ssm.po.WeixinCommandExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from weixin_command
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from weixin_command
-    where COMMAND_ID = #{commandId,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from weixin_command
-    where COMMAND_ID = #{commandId,jdbcType=VARCHAR}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.ssm.po.WeixinCommandExample" >
-    delete from weixin_command
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.ssm.po.WeixinCommand" >
-    insert into weixin_command (COMMAND_ID, KEYWORD, COMMANDCODE, 
-      CREATETIME, STATUS, BZ
-      )
-    values (#{commandId,jdbcType=VARCHAR}, #{keyword,jdbcType=VARCHAR}, #{commandcode,jdbcType=VARCHAR}, 
-      #{createtime,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{bz,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.ssm.po.WeixinCommand" >
-    insert into weixin_command
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="commandId != null" >
-        COMMAND_ID,
-      </if>
-      <if test="keyword != null" >
-        KEYWORD,
-      </if>
-      <if test="commandcode != null" >
-        COMMANDCODE,
-      </if>
-      <if test="createtime != null" >
-        CREATETIME,
-      </if>
-      <if test="status != null" >
-        STATUS,
-      </if>
-      <if test="bz != null" >
-        BZ,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="commandId != null" >
-        #{commandId,jdbcType=VARCHAR},
-      </if>
-      <if test="keyword != null" >
-        #{keyword,jdbcType=VARCHAR},
-      </if>
-      <if test="commandcode != null" >
-        #{commandcode,jdbcType=VARCHAR},
-      </if>
-      <if test="createtime != null" >
-        #{createtime,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="bz != null" >
-        #{bz,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.ssm.po.WeixinCommandExample" resultType="java.lang.Integer" >
-    select count(*) from weixin_command
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update weixin_command
-    <set >
-      <if test="record.commandId != null" >
-        COMMAND_ID = #{record.commandId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.keyword != null" >
-        KEYWORD = #{record.keyword,jdbcType=VARCHAR},
-      </if>
-      <if test="record.commandcode != null" >
-        COMMANDCODE = #{record.commandcode,jdbcType=VARCHAR},
-      </if>
-      <if test="record.createtime != null" >
-        CREATETIME = #{record.createtime,jdbcType=VARCHAR},
-      </if>
-      <if test="record.status != null" >
-        STATUS = #{record.status,jdbcType=INTEGER},
-      </if>
-      <if test="record.bz != null" >
-        BZ = #{record.bz,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update weixin_command
-    set COMMAND_ID = #{record.commandId,jdbcType=VARCHAR},
-      KEYWORD = #{record.keyword,jdbcType=VARCHAR},
-      COMMANDCODE = #{record.commandcode,jdbcType=VARCHAR},
-      CREATETIME = #{record.createtime,jdbcType=VARCHAR},
-      STATUS = #{record.status,jdbcType=INTEGER},
-      BZ = #{record.bz,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ssm.po.WeixinCommand" >
-    update weixin_command
-    <set >
-      <if test="keyword != null" >
-        KEYWORD = #{keyword,jdbcType=VARCHAR},
-      </if>
-      <if test="commandcode != null" >
-        COMMANDCODE = #{commandcode,jdbcType=VARCHAR},
-      </if>
-      <if test="createtime != null" >
-        CREATETIME = #{createtime,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        STATUS = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="bz != null" >
-        BZ = #{bz,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where COMMAND_ID = #{commandId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.ssm.po.WeixinCommand" >
-    update weixin_command
-    set KEYWORD = #{keyword,jdbcType=VARCHAR},
-      COMMANDCODE = #{commandcode,jdbcType=VARCHAR},
-      CREATETIME = #{createtime,jdbcType=VARCHAR},
-      STATUS = #{status,jdbcType=INTEGER},
-      BZ = #{bz,jdbcType=VARCHAR}
-    where COMMAND_ID = #{commandId,jdbcType=VARCHAR}
-  </update>
+<mapper namespace="com.ssm.mapper.WeixinCommandMapper">
+	<resultMap id="BaseResultMap" type="com.ssm.po.WeixinCommand">
+		<id column="COMMAND_ID" property="commandId" jdbcType="VARCHAR" />
+		<result column="KEYWORD" property="keyword" jdbcType="VARCHAR" />
+		<result column="COMMANDCODE" property="commandcode" jdbcType="VARCHAR" />
+		<result column="CREATETIME" property="createtime" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="INTEGER" />
+		<result column="BZ" property="bz" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		COMMAND_ID, KEYWORD, COMMANDCODE, CREATETIME, STATUS, BZ
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.ssm.po.WeixinCommandExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from weixin_command
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from weixin_command
+		where COMMAND_ID = #{commandId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from weixin_command
+		where COMMAND_ID = #{commandId,jdbcType=VARCHAR}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.ssm.po.WeixinCommandExample">
+		delete from weixin_command
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.ssm.po.WeixinCommand">
+		insert into weixin_command (COMMAND_ID, KEYWORD, COMMANDCODE,
+		CREATETIME, STATUS, BZ
+		)
+		values (#{commandId,jdbcType=VARCHAR}, #{keyword,jdbcType=VARCHAR},
+		#{commandcode,jdbcType=VARCHAR},
+		#{createtime,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{bz,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.ssm.po.WeixinCommand">
+		insert into weixin_command
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="commandId != null">
+				COMMAND_ID,
+			</if>
+			<if test="keyword != null">
+				KEYWORD,
+			</if>
+			<if test="commandcode != null">
+				COMMANDCODE,
+			</if>
+			<if test="createtime != null">
+				CREATETIME,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="bz != null">
+				BZ,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="commandId != null">
+				#{commandId,jdbcType=VARCHAR},
+			</if>
+			<if test="keyword != null">
+				#{keyword,jdbcType=VARCHAR},
+			</if>
+			<if test="commandcode != null">
+				#{commandcode,jdbcType=VARCHAR},
+			</if>
+			<if test="createtime != null">
+				#{createtime,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=INTEGER},
+			</if>
+			<if test="bz != null">
+				#{bz,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.ssm.po.WeixinCommandExample"
+		resultType="java.lang.Integer">
+		select count(*) from weixin_command
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update weixin_command
+		<set>
+			<if test="record.commandId != null">
+				COMMAND_ID = #{record.commandId,jdbcType=VARCHAR},
+			</if>
+			<if test="record.keyword != null">
+				KEYWORD = #{record.keyword,jdbcType=VARCHAR},
+			</if>
+			<if test="record.commandcode != null">
+				COMMANDCODE = #{record.commandcode,jdbcType=VARCHAR},
+			</if>
+			<if test="record.createtime != null">
+				CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+			</if>
+			<if test="record.status != null">
+				STATUS = #{record.status,jdbcType=INTEGER},
+			</if>
+			<if test="record.bz != null">
+				BZ = #{record.bz,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update weixin_command
+		set COMMAND_ID = #{record.commandId,jdbcType=VARCHAR},
+		KEYWORD = #{record.keyword,jdbcType=VARCHAR},
+		COMMANDCODE = #{record.commandcode,jdbcType=VARCHAR},
+		CREATETIME = #{record.createtime,jdbcType=VARCHAR},
+		STATUS = #{record.status,jdbcType=INTEGER},
+		BZ = #{record.bz,jdbcType=VARCHAR}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.ssm.po.WeixinCommand">
+		update weixin_command
+		<set>
+			<if test="keyword != null">
+				KEYWORD = #{keyword,jdbcType=VARCHAR},
+			</if>
+			<if test="commandcode != null">
+				COMMANDCODE = #{commandcode,jdbcType=VARCHAR},
+			</if>
+			<if test="createtime != null">
+				CREATETIME = #{createtime,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=INTEGER},
+			</if>
+			<if test="bz != null">
+				BZ = #{bz,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where COMMAND_ID = #{commandId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.ssm.po.WeixinCommand">
+		update weixin_command
+		set KEYWORD = #{keyword,jdbcType=VARCHAR},
+		COMMANDCODE = #{commandcode,jdbcType=VARCHAR},
+		CREATETIME = #{createtime,jdbcType=VARCHAR},
+		STATUS = #{status,jdbcType=INTEGER},
+		BZ = #{bz,jdbcType=VARCHAR}
+		where COMMAND_ID = #{commandId,jdbcType=VARCHAR}
+	</update>
 </mapper>

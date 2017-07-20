@@ -45,7 +45,8 @@
 								</li>
 								<li class="dropdown-footer">
 									<a href="javascript:">
-										预留功能,待开发
+										<button type="button" class="btn btn-primary" onclick="webSocket()">即时通讯</button>
+										<!-- data-toggle="modal" data-target="#modal"  -->
 										<i class="ace-icon fa fa-arrow-right"></i>
 									</a>
 								</li>
@@ -61,7 +62,7 @@
 							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
 								<li class="dropdown-header">
 									<i class="ace-icon fa fa-bell-o"></i>
-									FH Aadmin 即时通讯
+									即时聊天
 								</li>
 							</ul>
 						</li>

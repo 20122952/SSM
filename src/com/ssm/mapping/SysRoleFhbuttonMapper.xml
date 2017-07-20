@@ -1,181 +1,218 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ssm.mapper.SysRoleFhbuttonMapper" >
-  <resultMap id="BaseResultMap" type="com.ssm.po.SysRoleFhbutton" >
-    <id column="RB_ID" property="rbId" jdbcType="VARCHAR" />
-    <result column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
-    <result column="BUTTON_ID" property="buttonId" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
-    RB_ID, ROLE_ID, BUTTON_ID
-  </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ssm.po.SysRoleFhbuttonExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from sys_role_fhbutton
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from sys_role_fhbutton
-    where RB_ID = #{rbId,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from sys_role_fhbutton
-    where RB_ID = #{rbId,jdbcType=VARCHAR}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.ssm.po.SysRoleFhbuttonExample" >
-    delete from sys_role_fhbutton
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.ssm.po.SysRoleFhbutton" >
-    insert into sys_role_fhbutton (RB_ID, ROLE_ID, BUTTON_ID
-      )
-    values (#{rbId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, #{buttonId,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.ssm.po.SysRoleFhbutton" >
-    insert into sys_role_fhbutton
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="rbId != null" >
-        RB_ID,
-      </if>
-      <if test="roleId != null" >
-        ROLE_ID,
-      </if>
-      <if test="buttonId != null" >
-        BUTTON_ID,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="rbId != null" >
-        #{rbId,jdbcType=VARCHAR},
-      </if>
-      <if test="roleId != null" >
-        #{roleId,jdbcType=VARCHAR},
-      </if>
-      <if test="buttonId != null" >
-        #{buttonId,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.ssm.po.SysRoleFhbuttonExample" resultType="java.lang.Integer" >
-    select count(*) from sys_role_fhbutton
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update sys_role_fhbutton
-    <set >
-      <if test="record.rbId != null" >
-        RB_ID = #{record.rbId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.roleId != null" >
-        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.buttonId != null" >
-        BUTTON_ID = #{record.buttonId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update sys_role_fhbutton
-    set RB_ID = #{record.rbId,jdbcType=VARCHAR},
-      ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
-      BUTTON_ID = #{record.buttonId,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ssm.po.SysRoleFhbutton" >
-    update sys_role_fhbutton
-    <set >
-      <if test="roleId != null" >
-        ROLE_ID = #{roleId,jdbcType=VARCHAR},
-      </if>
-      <if test="buttonId != null" >
-        BUTTON_ID = #{buttonId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where RB_ID = #{rbId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.ssm.po.SysRoleFhbutton" >
-    update sys_role_fhbutton
-    set ROLE_ID = #{roleId,jdbcType=VARCHAR},
-      BUTTON_ID = #{buttonId,jdbcType=VARCHAR}
-    where RB_ID = #{rbId,jdbcType=VARCHAR}
-  </update>
+<mapper namespace="com.ssm.mapper.SysRoleFhbuttonMapper">
+	<resultMap id="BaseResultMap" type="com.ssm.po.SysRoleFhbutton">
+		<id column="RB_ID" property="rbId" jdbcType="VARCHAR" />
+		<result column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
+		<result column="BUTTON_ID" property="buttonId" jdbcType="VARCHAR" />
+		
+		<association property="sysFhbutton" javaType="com.ssm.po.SysFhbutton">
+			<id column="FHBUTTON_ID" property="fhbuttonId" jdbcType="VARCHAR" />
+			<result column="NAME" property="name" jdbcType="VARCHAR" />
+			<result column="QX_NAME" property="qxName" jdbcType="VARCHAR" />
+			<result column="BZ" property="bz" jdbcType="VARCHAR" />
+		</association>
+		<association property="sysRole" javaType="com.ssm.po.SysRole">
+			<id column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
+			<result column="ROLE_NAME" property="roleName" jdbcType="VARCHAR" />
+			<result column="RIGHTS" property="rights" jdbcType="VARCHAR" />
+			<result column="PARENT_ID" property="parentId" jdbcType="VARCHAR" />
+			<result column="ADD_QX" property="addQx" jdbcType="VARCHAR" />
+			<result column="DEL_QX" property="delQx" jdbcType="VARCHAR" />
+			<result column="EDIT_QX" property="editQx" jdbcType="VARCHAR" />
+			<result column="CHA_QX" property="chaQx" jdbcType="VARCHAR" />
+		</association>
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		RB_ID, ROLE_ID, BUTTON_ID
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.ssm.po.SysRoleFhbuttonExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from sys_role_fhbutton
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from sys_role_fhbutton
+		where RB_ID = #{rbId,jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectByRoleId" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		SELECT sys_fhbutton.NAME,sys_fhbutton.QX_NAME
+		<include refid="Base_Column_List" />
+ 		from sys_role ,sys_fhbutton ,sys_role_fhbutton
+		where sys_role_fhbutton.BUTTON_ID = sys_fhbutton.FHBUTTON_ID 
+		AND sys_role_fhbutton.ROLE_ID = sys_role.ROLE_ID 
+		AND sys_role_fhbutton.ROLE_ID = #{roleId,jdbcType=VARCHAR}
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from sys_role_fhbutton
+		where RB_ID = #{rbId,jdbcType=VARCHAR}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.ssm.po.SysRoleFhbuttonExample">
+		delete from sys_role_fhbutton
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.ssm.po.SysRoleFhbutton">
+		insert into sys_role_fhbutton (RB_ID, ROLE_ID, BUTTON_ID
+		)
+		values (#{rbId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR},
+		#{buttonId,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.ssm.po.SysRoleFhbutton">
+		insert into sys_role_fhbutton
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="rbId != null">
+				RB_ID,
+			</if>
+			<if test="roleId != null">
+				ROLE_ID,
+			</if>
+			<if test="buttonId != null">
+				BUTTON_ID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="rbId != null">
+				#{rbId,jdbcType=VARCHAR},
+			</if>
+			<if test="roleId != null">
+				#{roleId,jdbcType=VARCHAR},
+			</if>
+			<if test="buttonId != null">
+				#{buttonId,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.ssm.po.SysRoleFhbuttonExample"
+		resultType="java.lang.Integer">
+		select count(*) from sys_role_fhbutton
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update sys_role_fhbutton
+		<set>
+			<if test="record.rbId != null">
+				RB_ID = #{record.rbId,jdbcType=VARCHAR},
+			</if>
+			<if test="record.roleId != null">
+				ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+			</if>
+			<if test="record.buttonId != null">
+				BUTTON_ID = #{record.buttonId,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update sys_role_fhbutton
+		set RB_ID = #{record.rbId,jdbcType=VARCHAR},
+		ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+		BUTTON_ID = #{record.buttonId,jdbcType=VARCHAR}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.ssm.po.SysRoleFhbutton">
+		update sys_role_fhbutton
+		<set>
+			<if test="roleId != null">
+				ROLE_ID = #{roleId,jdbcType=VARCHAR},
+			</if>
+			<if test="buttonId != null">
+				BUTTON_ID = #{buttonId,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where RB_ID = #{rbId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.ssm.po.SysRoleFhbutton">
+		update sys_role_fhbutton
+		set ROLE_ID = #{roleId,jdbcType=VARCHAR},
+		BUTTON_ID = #{buttonId,jdbcType=VARCHAR}
+		where RB_ID = #{rbId,jdbcType=VARCHAR}
+	</update>
 </mapper>

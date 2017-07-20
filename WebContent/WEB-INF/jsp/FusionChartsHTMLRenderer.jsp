@@ -1,3 +1,4 @@
+
 <%
 /* Version 2.0: 
  * Added DOMId to FlashVars
@@ -98,24 +99,24 @@
 	strFlashVars+= "&scaleMode=" + scaleMode+ "&lang=" + lang;
 	
 	
-%> 
-			<!--START Code Block for Chart <%=chartId%> -->
-			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" 
-			width="<%= chartWidth%>" height="<%= chartHeight%>" id="<%= chartId%>">
-			<param name="allowScriptAccess" value="always" />
-			<param name="movie" value="<%=chartSWF%>"/>
-			<param name="FlashVars" value="<%=strFlashVars%>" />
-			<param name="quality" value="high" />
-			<param name="wmode" value="<%=wMode%>" />
-			<param name="bgcolor" value="<%=color%>" />
-			<embed src="<%=chartSWF%>" FlashVars="<%=strFlashVars%>" 
-			quality="high" width="<%=chartWidth%>" 
-			height="<%=chartHeight%>" name="<%=chartId%>"
-			allowScriptAccess="always" type="application/x-shockwave-flash" 
-                        pluginspage="http://www.macromedia.com/go/getflashplayer" 
-                        wmode="transparent" bgcolor="<%=color%>" />
-			</object>
-			<!--END Code Block for Chart <%=chartId%> -->
+%>
+<!--START Code Block for Chart <%=chartId%> -->
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+	codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+	width="<%= chartWidth%>" height="<%= chartHeight%>" id="<%= chartId%>">
+	<param name="allowScriptAccess" value="always" />
+	<param name="movie" value="<%=chartSWF%>" />
+	<param name="FlashVars" value="<%=strFlashVars%>" />
+	<param name="quality" value="high" />
+	<param name="wmode" value="<%=wMode%>" />
+	<param name="bgcolor" value="<%=color%>" />
+	<embed src="<%=chartSWF%>" FlashVars="<%=strFlashVars%>" quality="high"
+		width="<%=chartWidth%>" height="<%=chartHeight%>" name="<%=chartId%>"
+		allowScriptAccess="always" type="application/x-shockwave-flash"
+		pluginspage="http://www.macromedia.com/go/getflashplayer"
+		wmode="transparent" bgcolor="<%=color%>" />
+</object>
+<!--END Code Block for Chart <%=chartId%> -->
 <%!
     /**
      * Converts a Boolean value to int value<br>

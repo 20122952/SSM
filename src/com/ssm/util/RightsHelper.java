@@ -4,9 +4,10 @@ import java.math.BigInteger;
 
 /**
  * 权限计算帮助类
- * @author fh qq 3 1 3 5 96790[青苔]
- * 修改日期：2015/11/2
+ * @author zhefeng.ning
+ *
  */
+
 public class RightsHelper {
 	/**
 	 * 利用BigInteger对权限进行2的权的和计算

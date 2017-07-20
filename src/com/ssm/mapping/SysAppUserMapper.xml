@@ -1,400 +1,412 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.ssm.mapper.SysAppUserMapper" >
-  <resultMap id="BaseResultMap" type="com.ssm.po.SysAppUser" >
-    <id column="USER_ID" property="userId" jdbcType="VARCHAR" />
-    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
-    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
-    <result column="NAME" property="name" jdbcType="VARCHAR" />
-    <result column="RIGHTS" property="rights" jdbcType="VARCHAR" />
-    <result column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
-    <result column="LAST_LOGIN" property="lastLogin" jdbcType="VARCHAR" />
-    <result column="IP" property="ip" jdbcType="VARCHAR" />
-    <result column="STATUS" property="status" jdbcType="VARCHAR" />
-    <result column="BZ" property="bz" jdbcType="VARCHAR" />
-    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
-    <result column="SFID" property="sfid" jdbcType="VARCHAR" />
-    <result column="START_TIME" property="startTime" jdbcType="VARCHAR" />
-    <result column="END_TIME" property="endTime" jdbcType="VARCHAR" />
-    <result column="YEARS" property="years" jdbcType="INTEGER" />
-    <result column="NUMBER" property="number" jdbcType="VARCHAR" />
-    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
-    USER_ID, USERNAME, PASSWORD, NAME, RIGHTS, ROLE_ID, LAST_LOGIN, IP, STATUS, BZ, PHONE, 
-    SFID, START_TIME, END_TIME, YEARS, NUMBER, EMAIL
-  </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ssm.po.SysAppUserExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from sys_app_user
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
-    <include refid="Base_Column_List" />
-    from sys_app_user
-    where USER_ID = #{userId,jdbcType=VARCHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from sys_app_user
-    where USER_ID = #{userId,jdbcType=VARCHAR}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.ssm.po.SysAppUserExample" >
-    delete from sys_app_user
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.ssm.po.SysAppUser" >
-    insert into sys_app_user (USER_ID, USERNAME, PASSWORD, 
-      NAME, RIGHTS, ROLE_ID, 
-      LAST_LOGIN, IP, STATUS, 
-      BZ, PHONE, SFID, START_TIME, 
-      END_TIME, YEARS, NUMBER, 
-      EMAIL)
-    values (#{userId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{name,jdbcType=VARCHAR}, #{rights,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, 
-      #{lastLogin,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
-      #{bz,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{sfid,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, 
-      #{endTime,jdbcType=VARCHAR}, #{years,jdbcType=INTEGER}, #{number,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.ssm.po.SysAppUser" >
-    insert into sys_app_user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
-        USER_ID,
-      </if>
-      <if test="username != null" >
-        USERNAME,
-      </if>
-      <if test="password != null" >
-        PASSWORD,
-      </if>
-      <if test="name != null" >
-        NAME,
-      </if>
-      <if test="rights != null" >
-        RIGHTS,
-      </if>
-      <if test="roleId != null" >
-        ROLE_ID,
-      </if>
-      <if test="lastLogin != null" >
-        LAST_LOGIN,
-      </if>
-      <if test="ip != null" >
-        IP,
-      </if>
-      <if test="status != null" >
-        STATUS,
-      </if>
-      <if test="bz != null" >
-        BZ,
-      </if>
-      <if test="phone != null" >
-        PHONE,
-      </if>
-      <if test="sfid != null" >
-        SFID,
-      </if>
-      <if test="startTime != null" >
-        START_TIME,
-      </if>
-      <if test="endTime != null" >
-        END_TIME,
-      </if>
-      <if test="years != null" >
-        YEARS,
-      </if>
-      <if test="number != null" >
-        NUMBER,
-      </if>
-      <if test="email != null" >
-        EMAIL,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="userId != null" >
-        #{userId,jdbcType=VARCHAR},
-      </if>
-      <if test="username != null" >
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="rights != null" >
-        #{rights,jdbcType=VARCHAR},
-      </if>
-      <if test="roleId != null" >
-        #{roleId,jdbcType=VARCHAR},
-      </if>
-      <if test="lastLogin != null" >
-        #{lastLogin,jdbcType=VARCHAR},
-      </if>
-      <if test="ip != null" >
-        #{ip,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="bz != null" >
-        #{bz,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null" >
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="sfid != null" >
-        #{sfid,jdbcType=VARCHAR},
-      </if>
-      <if test="startTime != null" >
-        #{startTime,jdbcType=VARCHAR},
-      </if>
-      <if test="endTime != null" >
-        #{endTime,jdbcType=VARCHAR},
-      </if>
-      <if test="years != null" >
-        #{years,jdbcType=INTEGER},
-      </if>
-      <if test="number != null" >
-        #{number,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.ssm.po.SysAppUserExample" resultType="java.lang.Integer" >
-    select count(*) from sys_app_user
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update sys_app_user
-    <set >
-      <if test="record.userId != null" >
-        USER_ID = #{record.userId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.username != null" >
-        USERNAME = #{record.username,jdbcType=VARCHAR},
-      </if>
-      <if test="record.password != null" >
-        PASSWORD = #{record.password,jdbcType=VARCHAR},
-      </if>
-      <if test="record.name != null" >
-        NAME = #{record.name,jdbcType=VARCHAR},
-      </if>
-      <if test="record.rights != null" >
-        RIGHTS = #{record.rights,jdbcType=VARCHAR},
-      </if>
-      <if test="record.roleId != null" >
-        ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.lastLogin != null" >
-        LAST_LOGIN = #{record.lastLogin,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ip != null" >
-        IP = #{record.ip,jdbcType=VARCHAR},
-      </if>
-      <if test="record.status != null" >
-        STATUS = #{record.status,jdbcType=VARCHAR},
-      </if>
-      <if test="record.bz != null" >
-        BZ = #{record.bz,jdbcType=VARCHAR},
-      </if>
-      <if test="record.phone != null" >
-        PHONE = #{record.phone,jdbcType=VARCHAR},
-      </if>
-      <if test="record.sfid != null" >
-        SFID = #{record.sfid,jdbcType=VARCHAR},
-      </if>
-      <if test="record.startTime != null" >
-        START_TIME = #{record.startTime,jdbcType=VARCHAR},
-      </if>
-      <if test="record.endTime != null" >
-        END_TIME = #{record.endTime,jdbcType=VARCHAR},
-      </if>
-      <if test="record.years != null" >
-        YEARS = #{record.years,jdbcType=INTEGER},
-      </if>
-      <if test="record.number != null" >
-        NUMBER = #{record.number,jdbcType=VARCHAR},
-      </if>
-      <if test="record.email != null" >
-        EMAIL = #{record.email,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update sys_app_user
-    set USER_ID = #{record.userId,jdbcType=VARCHAR},
-      USERNAME = #{record.username,jdbcType=VARCHAR},
-      PASSWORD = #{record.password,jdbcType=VARCHAR},
-      NAME = #{record.name,jdbcType=VARCHAR},
-      RIGHTS = #{record.rights,jdbcType=VARCHAR},
-      ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
-      LAST_LOGIN = #{record.lastLogin,jdbcType=VARCHAR},
-      IP = #{record.ip,jdbcType=VARCHAR},
-      STATUS = #{record.status,jdbcType=VARCHAR},
-      BZ = #{record.bz,jdbcType=VARCHAR},
-      PHONE = #{record.phone,jdbcType=VARCHAR},
-      SFID = #{record.sfid,jdbcType=VARCHAR},
-      START_TIME = #{record.startTime,jdbcType=VARCHAR},
-      END_TIME = #{record.endTime,jdbcType=VARCHAR},
-      YEARS = #{record.years,jdbcType=INTEGER},
-      NUMBER = #{record.number,jdbcType=VARCHAR},
-      EMAIL = #{record.email,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.ssm.po.SysAppUser" >
-    update sys_app_user
-    <set >
-      <if test="username != null" >
-        USERNAME = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        PASSWORD = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null" >
-        NAME = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="rights != null" >
-        RIGHTS = #{rights,jdbcType=VARCHAR},
-      </if>
-      <if test="roleId != null" >
-        ROLE_ID = #{roleId,jdbcType=VARCHAR},
-      </if>
-      <if test="lastLogin != null" >
-        LAST_LOGIN = #{lastLogin,jdbcType=VARCHAR},
-      </if>
-      <if test="ip != null" >
-        IP = #{ip,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null" >
-        STATUS = #{status,jdbcType=VARCHAR},
-      </if>
-      <if test="bz != null" >
-        BZ = #{bz,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null" >
-        PHONE = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="sfid != null" >
-        SFID = #{sfid,jdbcType=VARCHAR},
-      </if>
-      <if test="startTime != null" >
-        START_TIME = #{startTime,jdbcType=VARCHAR},
-      </if>
-      <if test="endTime != null" >
-        END_TIME = #{endTime,jdbcType=VARCHAR},
-      </if>
-      <if test="years != null" >
-        YEARS = #{years,jdbcType=INTEGER},
-      </if>
-      <if test="number != null" >
-        NUMBER = #{number,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        EMAIL = #{email,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where USER_ID = #{userId,jdbcType=VARCHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.ssm.po.SysAppUser" >
-    update sys_app_user
-    set USERNAME = #{username,jdbcType=VARCHAR},
-      PASSWORD = #{password,jdbcType=VARCHAR},
-      NAME = #{name,jdbcType=VARCHAR},
-      RIGHTS = #{rights,jdbcType=VARCHAR},
-      ROLE_ID = #{roleId,jdbcType=VARCHAR},
-      LAST_LOGIN = #{lastLogin,jdbcType=VARCHAR},
-      IP = #{ip,jdbcType=VARCHAR},
-      STATUS = #{status,jdbcType=VARCHAR},
-      BZ = #{bz,jdbcType=VARCHAR},
-      PHONE = #{phone,jdbcType=VARCHAR},
-      SFID = #{sfid,jdbcType=VARCHAR},
-      START_TIME = #{startTime,jdbcType=VARCHAR},
-      END_TIME = #{endTime,jdbcType=VARCHAR},
-      YEARS = #{years,jdbcType=INTEGER},
-      NUMBER = #{number,jdbcType=VARCHAR},
-      EMAIL = #{email,jdbcType=VARCHAR}
-    where USER_ID = #{userId,jdbcType=VARCHAR}
-  </update>
+<mapper namespace="com.ssm.mapper.SysAppUserMapper">
+	<resultMap id="BaseResultMap" type="com.ssm.po.SysAppUser">
+		<id column="USER_ID" property="userId" jdbcType="VARCHAR" />
+		<result column="USERNAME" property="username" jdbcType="VARCHAR" />
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="RIGHTS" property="rights" jdbcType="VARCHAR" />
+		<result column="ROLE_ID" property="roleId" jdbcType="VARCHAR" />
+		<result column="LAST_LOGIN" property="lastLogin" jdbcType="VARCHAR" />
+		<result column="IP" property="ip" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="BZ" property="bz" jdbcType="VARCHAR" />
+		<result column="PHONE" property="phone" jdbcType="VARCHAR" />
+		<result column="SFID" property="sfid" jdbcType="VARCHAR" />
+		<result column="START_TIME" property="startTime" jdbcType="VARCHAR" />
+		<result column="END_TIME" property="endTime" jdbcType="VARCHAR" />
+		<result column="YEARS" property="years" jdbcType="INTEGER" />
+		<result column="NUMBER" property="number" jdbcType="VARCHAR" />
+		<result column="EMAIL" property="email" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		USER_ID, USERNAME, PASSWORD, NAME, RIGHTS, ROLE_ID, LAST_LOGIN, IP, STATUS,
+		BZ, PHONE,
+		SFID, START_TIME, END_TIME, YEARS, NUMBER, EMAIL
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.ssm.po.SysAppUserExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from sys_app_user
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from sys_app_user
+		where USER_ID = #{userId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from sys_app_user
+		where USER_ID = #{userId,jdbcType=VARCHAR}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.ssm.po.SysAppUserExample">
+		delete from sys_app_user
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.ssm.po.SysAppUser">
+		insert into sys_app_user (USER_ID, USERNAME, PASSWORD,
+		NAME, RIGHTS, ROLE_ID,
+		LAST_LOGIN, IP, STATUS,
+		BZ, PHONE, SFID, START_TIME,
+		END_TIME, YEARS, NUMBER,
+		EMAIL)
+		values (#{userId,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR},
+		#{name,jdbcType=VARCHAR}, #{rights,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR},
+		#{lastLogin,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR},
+		#{status,jdbcType=VARCHAR},
+		#{bz,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{sfid,jdbcType=VARCHAR},
+		#{startTime,jdbcType=VARCHAR},
+		#{endTime,jdbcType=VARCHAR}, #{years,jdbcType=INTEGER}, #{number,jdbcType=VARCHAR},
+		#{email,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.ssm.po.SysAppUser">
+		insert into sys_app_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				USER_ID,
+			</if>
+			<if test="username != null">
+				USERNAME,
+			</if>
+			<if test="password != null">
+				PASSWORD,
+			</if>
+			<if test="name != null">
+				NAME,
+			</if>
+			<if test="rights != null">
+				RIGHTS,
+			</if>
+			<if test="roleId != null">
+				ROLE_ID,
+			</if>
+			<if test="lastLogin != null">
+				LAST_LOGIN,
+			</if>
+			<if test="ip != null">
+				IP,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="bz != null">
+				BZ,
+			</if>
+			<if test="phone != null">
+				PHONE,
+			</if>
+			<if test="sfid != null">
+				SFID,
+			</if>
+			<if test="startTime != null">
+				START_TIME,
+			</if>
+			<if test="endTime != null">
+				END_TIME,
+			</if>
+			<if test="years != null">
+				YEARS,
+			</if>
+			<if test="number != null">
+				NUMBER,
+			</if>
+			<if test="email != null">
+				EMAIL,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="rights != null">
+				#{rights,jdbcType=VARCHAR},
+			</if>
+			<if test="roleId != null">
+				#{roleId,jdbcType=VARCHAR},
+			</if>
+			<if test="lastLogin != null">
+				#{lastLogin,jdbcType=VARCHAR},
+			</if>
+			<if test="ip != null">
+				#{ip,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="bz != null">
+				#{bz,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="sfid != null">
+				#{sfid,jdbcType=VARCHAR},
+			</if>
+			<if test="startTime != null">
+				#{startTime,jdbcType=VARCHAR},
+			</if>
+			<if test="endTime != null">
+				#{endTime,jdbcType=VARCHAR},
+			</if>
+			<if test="years != null">
+				#{years,jdbcType=INTEGER},
+			</if>
+			<if test="number != null">
+				#{number,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.ssm.po.SysAppUserExample"
+		resultType="java.lang.Integer">
+		select count(*) from sys_app_user
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update sys_app_user
+		<set>
+			<if test="record.userId != null">
+				USER_ID = #{record.userId,jdbcType=VARCHAR},
+			</if>
+			<if test="record.username != null">
+				USERNAME = #{record.username,jdbcType=VARCHAR},
+			</if>
+			<if test="record.password != null">
+				PASSWORD = #{record.password,jdbcType=VARCHAR},
+			</if>
+			<if test="record.name != null">
+				NAME = #{record.name,jdbcType=VARCHAR},
+			</if>
+			<if test="record.rights != null">
+				RIGHTS = #{record.rights,jdbcType=VARCHAR},
+			</if>
+			<if test="record.roleId != null">
+				ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+			</if>
+			<if test="record.lastLogin != null">
+				LAST_LOGIN = #{record.lastLogin,jdbcType=VARCHAR},
+			</if>
+			<if test="record.ip != null">
+				IP = #{record.ip,jdbcType=VARCHAR},
+			</if>
+			<if test="record.status != null">
+				STATUS = #{record.status,jdbcType=VARCHAR},
+			</if>
+			<if test="record.bz != null">
+				BZ = #{record.bz,jdbcType=VARCHAR},
+			</if>
+			<if test="record.phone != null">
+				PHONE = #{record.phone,jdbcType=VARCHAR},
+			</if>
+			<if test="record.sfid != null">
+				SFID = #{record.sfid,jdbcType=VARCHAR},
+			</if>
+			<if test="record.startTime != null">
+				START_TIME = #{record.startTime,jdbcType=VARCHAR},
+			</if>
+			<if test="record.endTime != null">
+				END_TIME = #{record.endTime,jdbcType=VARCHAR},
+			</if>
+			<if test="record.years != null">
+				YEARS = #{record.years,jdbcType=INTEGER},
+			</if>
+			<if test="record.number != null">
+				NUMBER = #{record.number,jdbcType=VARCHAR},
+			</if>
+			<if test="record.email != null">
+				EMAIL = #{record.email,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update sys_app_user
+		set USER_ID = #{record.userId,jdbcType=VARCHAR},
+		USERNAME = #{record.username,jdbcType=VARCHAR},
+		PASSWORD = #{record.password,jdbcType=VARCHAR},
+		NAME = #{record.name,jdbcType=VARCHAR},
+		RIGHTS = #{record.rights,jdbcType=VARCHAR},
+		ROLE_ID = #{record.roleId,jdbcType=VARCHAR},
+		LAST_LOGIN = #{record.lastLogin,jdbcType=VARCHAR},
+		IP = #{record.ip,jdbcType=VARCHAR},
+		STATUS = #{record.status,jdbcType=VARCHAR},
+		BZ = #{record.bz,jdbcType=VARCHAR},
+		PHONE = #{record.phone,jdbcType=VARCHAR},
+		SFID = #{record.sfid,jdbcType=VARCHAR},
+		START_TIME = #{record.startTime,jdbcType=VARCHAR},
+		END_TIME = #{record.endTime,jdbcType=VARCHAR},
+		YEARS = #{record.years,jdbcType=INTEGER},
+		NUMBER = #{record.number,jdbcType=VARCHAR},
+		EMAIL = #{record.email,jdbcType=VARCHAR}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.ssm.po.SysAppUser">
+		update sys_app_user
+		<set>
+			<if test="username != null">
+				USERNAME = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				PASSWORD = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				NAME = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="rights != null">
+				RIGHTS = #{rights,jdbcType=VARCHAR},
+			</if>
+			<if test="roleId != null">
+				ROLE_ID = #{roleId,jdbcType=VARCHAR},
+			</if>
+			<if test="lastLogin != null">
+				LAST_LOGIN = #{lastLogin,jdbcType=VARCHAR},
+			</if>
+			<if test="ip != null">
+				IP = #{ip,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="bz != null">
+				BZ = #{bz,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				PHONE = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="sfid != null">
+				SFID = #{sfid,jdbcType=VARCHAR},
+			</if>
+			<if test="startTime != null">
+				START_TIME = #{startTime,jdbcType=VARCHAR},
+			</if>
+			<if test="endTime != null">
+				END_TIME = #{endTime,jdbcType=VARCHAR},
+			</if>
+			<if test="years != null">
+				YEARS = #{years,jdbcType=INTEGER},
+			</if>
+			<if test="number != null">
+				NUMBER = #{number,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				EMAIL = #{email,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where USER_ID = #{userId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.ssm.po.SysAppUser">
+		update sys_app_user
+		set USERNAME = #{username,jdbcType=VARCHAR},
+		PASSWORD = #{password,jdbcType=VARCHAR},
+		NAME = #{name,jdbcType=VARCHAR},
+		RIGHTS = #{rights,jdbcType=VARCHAR},
+		ROLE_ID = #{roleId,jdbcType=VARCHAR},
+		LAST_LOGIN = #{lastLogin,jdbcType=VARCHAR},
+		IP = #{ip,jdbcType=VARCHAR},
+		STATUS = #{status,jdbcType=VARCHAR},
+		BZ = #{bz,jdbcType=VARCHAR},
+		PHONE = #{phone,jdbcType=VARCHAR},
+		SFID = #{sfid,jdbcType=VARCHAR},
+		START_TIME = #{startTime,jdbcType=VARCHAR},
+		END_TIME = #{endTime,jdbcType=VARCHAR},
+		YEARS = #{years,jdbcType=INTEGER},
+		NUMBER = #{number,jdbcType=VARCHAR},
+		EMAIL = #{email,jdbcType=VARCHAR}
+		where USER_ID = #{userId,jdbcType=VARCHAR}
+	</update>
 </mapper>

@@ -1,5 +1,6 @@
 package com.ssm.mapper;
 
+import com.ssm.po.SysFhbutton;
 import com.ssm.po.SysRoleFhbutton;
 import com.ssm.po.SysRoleFhbuttonExample;
 import java.util.List;
@@ -27,4 +28,12 @@ public interface SysRoleFhbuttonMapper {
     int updateByPrimaryKeySelective(SysRoleFhbutton record);
 
     int updateByPrimaryKey(SysRoleFhbutton record);
+
+    /**
+     * 后加的
+     * @param roleId
+     * @return
+     */
+    List<SysFhbutton> selectByRoleId(String roleId);
+	
 }

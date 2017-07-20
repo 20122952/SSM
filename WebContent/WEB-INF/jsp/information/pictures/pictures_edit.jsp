@@ -24,68 +24,95 @@
 				<div class="page-content">
 					<div class="row">
 						<div class="col-xs-12">
-						<form action="pictures/${msg }.do" name="Form" id="Form" method="post" enctype="multipart/form-data">
-							<input type="hidden" name="PICTURES_ID" id="PICTURES_ID" value="${pd.PICTURES_ID}"/>
-							<div id="zhongxin" style="padding-top: 13px;">
-							<table id="table_report" class="table table-striped table-bordered table-hover">
-								<tr>
-									<td style="width:50px;text-align: right;padding-top: 13px;">标题:</td>
-									<td><input type="text" name="TITLE" id="TITLE" value="${pd.TITLE}" maxlength="32" style="width:99%;" placeholder="这里输入标题" title="标题"/></td>
-								</tr>
-								<tr>
-									<td style="width:50px;text-align: right;padding-top: 13px;">图片:</td>
-									<td>
-										<c:if test="${pd == null || pd.PATH == '' || pd.PATH == null }">
-										<input type="file" id="tp" name="tp" onchange="fileType(this)"/>
-										</c:if>
-										<c:if test="${pd != null && pd.PATH != '' && pd.PATH != null }">
-											<a href="<%=basePath%>uploadFiles/uploadImgs/${pd.PATH}" target="_blank"><img src="<%=basePath%>uploadFiles/uploadImgs/${pd.PATH}" width="210"/></a>
-											<input type="button" class="btn btn-mini btn-danger" value="删除" onclick="delP('${pd.PATH}','${pd.PICTURES_ID }');" />
-											<input type="hidden" name="tpz" id="tpz" value="${pd.PATH }"/>
-										</c:if>
-									</td>
-								</tr>
-								<tr>
-									<td style="width:50px;text-align: right;padding-top: 13px;">属于:</td>
-									<td><input type="text" name="MASTER_ID" id="MASTER_ID" value="${pd.MASTER_ID}" maxlength="32" placeholder="这里输入属于" title="属于"/></td>
-								</tr>
-								<tr>
-									<td style="width:50px;text-align: right;padding-top: 13px;">备注:</td>
-									<td><input type="text" name="BZ" id="BZ" value="${pd.BZ}" maxlength="32" style="width:95%;" placeholder="这里输入备注" title="备注"/></td>
-								</tr>
-								<tr>
-									<td style="text-align: center;" colspan="2">
-										<a class="btn btn-mini btn-primary" onclick="save();">保存</a>
-										<a class="btn btn-mini btn-danger" onclick="top.Dialog.close();">取消</a>
-									</td>
-								</tr>
-							</table>
-							</div>
-							<div id="zhongxin2" class="center" style="display:none"><br/><br/><br/><br/><br/><img src="static/images/jiazai.gif" /><br/><h4 class="lighter block green">提交中...</h4></div>
-						</form>
+							<form action="pictures/${msg }.do" name="Form" id="Form"
+								method="post" enctype="multipart/form-data">
+								<input type="hidden" name="PICTURES_ID" id="PICTURES_ID"
+									value="${pd.PICTURES_ID}" />
+								<div id="zhongxin" style="padding-top: 13px;">
+									<table id="table_report"
+										class="table table-striped table-bordered table-hover">
+										<tr>
+											<td
+												style="width: 50px; text-align: right; padding-top: 13px;">标题:</td>
+											<td><input type="text" name="TITLE" id="TITLE"
+												value="${pd.TITLE}" maxlength="32" style="width: 99%;"
+												placeholder="这里输入标题" title="标题" /></td>
+										</tr>
+										<tr>
+											<td
+												style="width: 50px; text-align: right; padding-top: 13px;">图片:</td>
+											<td><c:if
+													test="${pd == null || pd.PATH == '' || pd.PATH == null }">
+													<input type="file" id="tp" name="tp"
+														onchange="fileType(this)" />
+												</c:if> <c:if
+													test="${pd != null && pd.PATH != '' && pd.PATH != null }">
+													<a href="<%=basePath%>uploadFiles/uploadImgs/${pd.PATH}"
+														target="_blank"><img
+														src="<%=basePath%>uploadFiles/uploadImgs/${pd.PATH}"
+														width="210" /></a>
+													<input type="button" class="btn btn-mini btn-danger"
+														value="删除"
+														onclick="delP('${pd.PATH}','${pd.PICTURES_ID }');" />
+													<input type="hidden" name="tpz" id="tpz"
+														value="${pd.PATH }" />
+												</c:if></td>
+										</tr>
+										<tr>
+											<td
+												style="width: 50px; text-align: right; padding-top: 13px;">属于:</td>
+											<td><input type="text" name="MASTER_ID" id="MASTER_ID"
+												value="${pd.MASTER_ID}" maxlength="32" placeholder="这里输入属于"
+												title="属于" /></td>
+										</tr>
+										<tr>
+											<td
+												style="width: 50px; text-align: right; padding-top: 13px;">备注:</td>
+											<td><input type="text" name="BZ" id="BZ"
+												value="${pd.BZ}" maxlength="32" style="width: 95%;"
+												placeholder="这里输入备注" title="备注" /></td>
+										</tr>
+										<tr>
+											<td style="text-align: center;" colspan="2"><a
+												class="btn btn-mini btn-primary" onclick="save();">保存</a> <a
+												class="btn btn-mini btn-danger"
+												onclick="top.Dialog.close();">取消</a></td>
+										</tr>
+									</table>
+								</div>
+								<div id="zhongxin2" class="center" style="display: none">
+									<br />
+									<br />
+									<br />
+									<br />
+									<br />
+									<img src="static/images/jiazai.gif" /><br />
+									<h4 class="lighter block green">提交中...</h4>
+								</div>
+							</form>
 						</div>
-					<!-- /.col -->
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
 				</div>
-				<!-- /.row -->
+				<!-- /.page-content -->
 			</div>
-			<!-- /.page-content -->
 		</div>
+		<!-- /.main-content -->
 	</div>
-	<!-- /.main-content -->
-</div>
-<!-- /.main-container -->
+	<!-- /.main-container -->
 
-<!-- basic scripts -->
-<!-- 页面底部js¨ -->
-<%@ include file="../../system/index/foot.jsp"%>
-<!-- ace scripts -->
-<script src="static/ace/js/ace/ace.js"></script>
-<!-- 上传控件 -->
-<script src="static/ace/js/ace/elements.fileinput.js"></script>
-<!--提示框-->
-<script type="text/javascript" src="static/js/jquery.tips.js"></script>			
+	<!-- basic scripts -->
+	<!-- 页面底部js¨ -->
+	<%@ include file="../../system/index/foot.jsp"%>
+	<!-- ace scripts -->
+	<script src="static/ace/js/ace/ace.js"></script>
+	<!-- 上传控件 -->
+	<script src="static/ace/js/ace/elements.fileinput.js"></script>
+	<!--提示框-->
+	<script type="text/javascript" src="static/js/jquery.tips.js"></script>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 		$(top.hangge());
 		$(function() {
 			//上传
